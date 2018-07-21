@@ -1,0 +1,9 @@
+name: phoenix
+version: 1
+main: com.glorial.main
+
+commands:
+
+    grant:
+        usage: /<command>
+        description: Used by ops to grant server items.
