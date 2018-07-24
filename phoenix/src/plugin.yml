@@ -1,6 +1,6 @@
 name: phoenix
 version: 1
-main: com.glorial.main
+main: com.glorial.phoneix.main
 
 commands:
 
