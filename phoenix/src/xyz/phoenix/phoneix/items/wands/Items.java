@@ -1,11 +1,11 @@
-package com.glorial.phoneix.items.wands;
+package xyz.phoenix.phoneix.items.wands;
 
-import com.glorial.phoneix.ItemBuilder;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import xyz.phoenix.phoneix.ItemBuilder;
 
 import java.util.Collections;
 
