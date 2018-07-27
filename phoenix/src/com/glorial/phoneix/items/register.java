@@ -1,14 +1,14 @@
 package com.glorial.phoneix.items;
 
+import com.glorial.phoneix.Main;
 import com.glorial.phoneix.commands.commandBlocker;
 import com.glorial.phoneix.events.obsSharderShard;
 import com.glorial.phoneix.events.paneBlocker;
 import com.glorial.phoneix.events.wandCrafter;
 import com.glorial.phoneix.items.msc.obsSharder;
 import com.glorial.phoneix.items.wands.wandCarver;
-import com.glorial.phoneix.main;
-import com.glorial.phoneix.spells.lumos;
-import com.glorial.phoneix.spells.wandMechanics;
+import com.glorial.phoneix.spells.Lumos;
+import com.glorial.phoneix.spells.WandMechanics;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -17,7 +17,7 @@ import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.plugin.Plugin;
 
 public class register {
-private Plugin plugin = main.getPlugin(main.class);
+private Plugin plugin = Main.getPlugin(Main.class);
 public Server server = Bukkit.getServer();
     public void recipes() {
 
@@ -34,13 +34,13 @@ public Server server = Bukkit.getServer();
         server.getPluginManager().registerEvents(new commandBlocker(), plugin);
         server.getPluginManager().registerEvents(new wandCrafter(), plugin);
         server.getPluginManager().registerEvents(new obsSharderShard(), plugin);
-        server.getPluginManager().registerEvents(new wandMechanics(), plugin);
+        server.getPluginManager().registerEvents(new WandMechanics(), plugin);
         server.getPluginManager().registerEvents(new paneBlocker(), plugin);
 
     }
     public void spellEvents() {
 
 
-        Bukkit.getServer().getPluginManager().registerEvents(new lumos(), plugin);
+        Bukkit.getServer().getPluginManager().registerEvents(new Lumos(), plugin);
     }
 }

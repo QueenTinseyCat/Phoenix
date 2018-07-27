@@ -14,7 +14,7 @@ public class playerJoinEvents implements Listener {
         Player player = event.getPlayer();
 
         player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.GREEN +"Please keep in mind, that this is not the official server. " +
-        "This is just the public testing server. All of our updates get pushed here first for testing, then to the main server. As of right now, " +
+        "This is just the public testing server. All of our updates get pushed here first for testing, then to the Main server. As of right now, " +
         "the official server is still in development, as well as many of our plugins. To get a better feeling for what is going on, join our discord, " +
         "discord.gg/QxDE4ES.");
 

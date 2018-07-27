@@ -11,10 +11,10 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.PlayerInventory;
 
-import static com.glorial.phoneix.main.spellId;
-import static com.glorial.phoneix.main.wandStatus;
+import static com.glorial.phoneix.Main.spellId;
+import static com.glorial.phoneix.Main.wandStatus;
 
-public class wandMechanics implements Listener {
+public class WandMechanics implements Listener {
     @EventHandler
     public void wandStateListener(PlayerInteractEvent event) {
         Player player = event.getPlayer();
@@ -38,7 +38,7 @@ public class wandMechanics implements Listener {
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.GRAY + "" + ChatColor.ITALIC + "raised wand");
                             wandStatus.remove(player.getUniqueId());
                             wandStatus.put(player.getUniqueId(), "raised");
-                            new raiseWand().raiseWand(event);
+                            new RaiseWand().raiseWand(event);
                             return;
 
                         }
@@ -48,7 +48,7 @@ public class wandMechanics implements Listener {
                     if(!wandStatus.containsKey(player.getUniqueId())) {
                         player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.GRAY + "" + ChatColor.ITALIC + "raised wand");
                         wandStatus.put(player.getUniqueId(), "raised");
-                        new raiseWand().raiseWand(event);
+                        new RaiseWand().raiseWand(event);
                         return;
                     }
                     }
@@ -65,7 +65,7 @@ public class wandMechanics implements Listener {
                                 player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.GRAY + "" + ChatColor.ITALIC + "lowered wand");
                                 wandStatus.remove(player.getUniqueId());
                                 wandStatus.put(player.getUniqueId(), "lowered");
-                                new lowerWand().lowerWand(event);
+                                new LowerWand().lowerWand(event);
                                 return;
                             }
 

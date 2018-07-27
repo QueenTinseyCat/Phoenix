@@ -6,9 +6,9 @@ import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import static com.glorial.phoneix.main.raisedInv;
+import static com.glorial.phoneix.Main.raisedInv;
 
-public class lowerWand {
+public class LowerWand {
 
     public void lowerWand(PlayerInteractEvent event) {
 

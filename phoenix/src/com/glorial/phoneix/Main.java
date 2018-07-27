@@ -9,7 +9,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class main extends JavaPlugin {
+public class Main extends JavaPlugin {
     public static HashMap<UUID, String> spellsSpoken = new HashMap<>();
     public static HashMap<UUID, String> wandStatus = new HashMap<>();
     public static HashMap<UUID, String> spellId = new HashMap<>();
