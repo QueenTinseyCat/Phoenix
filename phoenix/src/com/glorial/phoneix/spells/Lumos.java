@@ -12,25 +12,24 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.PlayerInventory;
 
-import static com.glorial.phoneix.main.spellsSpoken;
-import static com.glorial.phoneix.main.wandStatus;
+import static com.glorial.phoneix.Main.spellsSpoken;
 
-public class lumos implements Listener {
+public class Lumos implements Listener {
 
     @EventHandler
     public void LumosChatListener(AsyncPlayerChatEvent event) {
         Player player = event.getPlayer();
 
-        if(event.getMessage().equalsIgnoreCase("lumos")) {
+        if(event.getMessage().equalsIgnoreCase("Lumos")) {
 
             if (spellsSpoken.containsKey(player.getUniqueId())) {
                 spellsSpoken.remove(player.getUniqueId());
-                spellsSpoken.put(player.getUniqueId(), "lumos");
+                spellsSpoken.put(player.getUniqueId(), "Lumos");
 
                 return;
 
             }
-            spellsSpoken.put(player.getUniqueId(), "lumos");
+            spellsSpoken.put(player.getUniqueId(), "Lumos");
 
 
         }

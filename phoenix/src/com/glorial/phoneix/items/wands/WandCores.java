@@ -1,6 +1,5 @@
 package com.glorial.phoneix.items.wands;
 
-import com.glorial.phoneix.main;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -12,7 +11,7 @@ import org.bukkit.plugin.Plugin;
 import java.util.ArrayList;
 
 public class WandCores {
-    private Plugin plugin = main.getPlugin(main.class);
+    private Plugin plugin = com.glorial.phoneix.Main.getPlugin(com.glorial.phoneix.Main.class);
     public ItemStack unicornHair() {
         ItemStack unicornHair = new ItemStack(Material.STRING, 1);
         ItemMeta wunicornHair = unicornHair.getItemMeta();
