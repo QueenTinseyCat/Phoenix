@@ -15,7 +15,7 @@ public class obsSharder {
         ItemMeta wobsSharder = obsSharder.getItemMeta();
         wobsSharder.setDisplayName(ChatColor.DARK_PURPLE + "Obsidian Sharder");
         ArrayList<String> obsSharderLore = new ArrayList<>();
-        obsSharderLore.add(ChatColor.BLACK + "Forged by Goblins to obtain Wand Stone.");
+        obsSharderLore.add(ChatColor.BLACK + "Forged by Goblins to obtain Obsidian.");
         wobsSharder.setLore(obsSharderLore);
         wobsSharder.addEnchant(Enchantment.LUCK, 1, true);
         wobsSharder.addItemFlags(ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS);
