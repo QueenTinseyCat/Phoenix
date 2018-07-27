@@ -1,4 +1,4 @@
-package com.glorial.phoneix.events;
+package xyz.phoenix.phoneix.events;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

@@ -1,4 +1,4 @@
-package com.glorial.phoneix.items.msc;
+package xyz.phoenix.phoneix.items.msc;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

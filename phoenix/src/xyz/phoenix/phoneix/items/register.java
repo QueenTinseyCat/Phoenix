@@ -1,13 +1,12 @@
-package com.glorial.phoneix.items;
+package xyz.phoenix.phoneix.items;
 
-import com.glorial.phoneix.commands.CommandBlocker;
-import com.glorial.phoneix.events.PaneBlocker;
-import com.glorial.phoneix.events.WandCrafter;
-import com.glorial.phoneix.events.obsSharderShard;
-import com.glorial.phoneix.items.msc.OBSSharder;
-import com.glorial.phoneix.items.wands.WandCarver;
-import com.glorial.phoneix.spells.Lumos;
-import com.glorial.phoneix.spells.WandMechanics;
+import xyz.phoenix.phoneix.Main;
+import xyz.phoenix.phoneix.commands.CommandBlocker;
+import xyz.phoenix.phoneix.events.*;
+import xyz.phoenix.phoneix.items.msc.OBSSharder;
+import xyz.phoenix.phoneix.items.wands.WandCarver;
+import xyz.phoenix.phoneix.spells.Lumos;
+import xyz.phoenix.phoneix.spells.WandMechanics;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -17,7 +16,7 @@ import org.bukkit.plugin.Plugin;
 
 public class register {
 
-private Plugin plugin = com.glorial.phoneix.Main.getPlugin(com.glorial.phoneix.Main.class);
+private Plugin plugin = Main.getPlugin(Main.class);
 public Server server = Bukkit.getServer();
     public void recipes() {
 
@@ -29,8 +28,8 @@ public Server server = Bukkit.getServer();
     }
     public void events() {
 
-        server.getPluginManager().registerEvents(new com.glorial.phoneix.events.Events(), plugin);
-        server.getPluginManager().registerEvents(new com.glorial.phoneix.events.PlayerJoinEvents(), plugin);
+        server.getPluginManager().registerEvents(new Events(), plugin);
+        server.getPluginManager().registerEvents(new PlayerJoinEvents(), plugin);
         server.getPluginManager().registerEvents(new CommandBlocker(), plugin);
         server.getPluginManager().registerEvents(new WandCrafter(), plugin);
         server.getPluginManager().registerEvents(new obsSharderShard(), plugin);

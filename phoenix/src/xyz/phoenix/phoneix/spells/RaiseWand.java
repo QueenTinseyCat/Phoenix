@@ -1,11 +1,11 @@
-package com.glorial.phoneix.spells;
+package xyz.phoenix.phoneix.spells;
 
-import com.glorial.phoneix.items.wands.WandSlots;
+import xyz.phoenix.phoneix.items.wands.WandSlots;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 
-import static com.glorial.phoneix.Main.raisedInv;
+import static xyz.phoenix.phoneix.Main.raisedInv;
 
 public class RaiseWand {
     WandSlots wandslots = new WandSlots();
