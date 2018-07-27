@@ -1,6 +1,6 @@
 package xyz.phoenix.phoneix.events;
 
-import com.glorial.phoneix.items.wands.*;
+
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
