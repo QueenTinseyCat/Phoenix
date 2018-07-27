@@ -16,6 +16,8 @@ public class Wizard {
         this.uuid = uuid;
         this.inv = inv;
         this.spellSlot = spellSlot;
+
+        wizards.add(this);
     }
 
     public UUID getUuid() {

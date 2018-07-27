@@ -12,7 +12,9 @@ import xyz.phoenix.phoneix.Main;
 import java.util.ArrayList;
 
 public class WandCores {
+
     private Plugin plugin = Main.getPlugin(Main.class);
+
     public ItemStack unicornHair() {
         ItemStack unicornHair = new ItemStack(Material.STRING, 1);
         ItemMeta wunicornHair = unicornHair.getItemMeta();
