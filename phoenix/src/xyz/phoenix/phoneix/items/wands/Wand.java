@@ -11,8 +11,7 @@ import java.util.ArrayList;
 
 public class Wand {
 
-    WandWoods wandWoods = new WandWoods();
-    WandCores wandCores = new WandCores();
+
     public ItemStack wand() {
 
         ItemStack wand = new ItemStack(Material.GOLD_AXE, 1);
