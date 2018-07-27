@@ -1,10 +1,10 @@
-package com.glorial.phoneix.commands;
+package xyz.phoenix.phoneix.commands;
 
-import com.glorial.phoneix.items.msc.OBSSharder;
-import com.glorial.phoneix.items.wands.Wand;
-import com.glorial.phoneix.items.wands.WandCarver;
-import com.glorial.phoneix.items.wands.WandCores;
-import com.glorial.phoneix.items.wands.WandWoods;
+import xyz.phoenix.phoneix.items.msc.OBSSharder;
+import xyz.phoenix.phoneix.items.wands.Wand;
+import xyz.phoenix.phoneix.items.wands.WandCarver;
+import xyz.phoenix.phoneix.items.wands.WandCores;
+import xyz.phoenix.phoneix.items.wands.WandWoods;
 import net.minecraft.server.v1_12_R1.CommandExecute;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

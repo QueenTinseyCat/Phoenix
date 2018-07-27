@@ -1,4 +1,4 @@
-package com.glorial.phoneix.items.wands;
+package xyz.phoenix.phoneix.items.wands;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

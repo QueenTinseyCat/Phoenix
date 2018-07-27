@@ -1,4 +1,4 @@
-package com.glorial.phoneix.events;
+package xyz.phoenix.phoneix.events;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;

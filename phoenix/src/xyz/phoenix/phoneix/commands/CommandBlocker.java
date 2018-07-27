@@ -1,4 +1,4 @@
-package com.glorial.phoneix.commands;
+package xyz.phoenix.phoneix.commands;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
