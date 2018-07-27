@@ -1,4 +1,4 @@
-package com.glorial.phoneix;
+package xyz.phoenix.phoneix;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
