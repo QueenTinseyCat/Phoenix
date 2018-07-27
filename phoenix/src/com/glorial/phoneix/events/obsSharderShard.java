@@ -13,6 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 
 public class obsSharderShard implements Listener {
+
     @EventHandler
     public void playerInteractBedrock(PlayerInteractEvent event) {
         Player player = event.getPlayer();

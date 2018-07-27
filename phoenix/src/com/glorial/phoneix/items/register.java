@@ -1,11 +1,11 @@
 package com.glorial.phoneix.items;
 
-import com.glorial.phoneix.commands.commandBlocker;
+import com.glorial.phoneix.commands.CommandBlocker;
+import com.glorial.phoneix.events.PaneBlocker;
+import com.glorial.phoneix.events.WandCrafter;
 import com.glorial.phoneix.events.obsSharderShard;
-import com.glorial.phoneix.events.paneBlocker;
-import com.glorial.phoneix.events.wandCrafter;
-import com.glorial.phoneix.items.msc.obsSharder;
-import com.glorial.phoneix.items.wands.wandCarver;
+import com.glorial.phoneix.items.msc.OBSSharder;
+import com.glorial.phoneix.items.wands.WandCarver;
 import com.glorial.phoneix.main;
 import com.glorial.phoneix.spells.lumos;
 import com.glorial.phoneix.spells.wandMechanics;
@@ -22,20 +22,20 @@ public Server server = Bukkit.getServer();
     public void recipes() {
 
 
-        Bukkit.addRecipe(new ShapelessRecipe(new NamespacedKey(plugin, "wandCarver"),new wandCarver().carver()).addIngredient(Material.STICK).addIngredient(Material.OBSIDIAN));
-        Bukkit.addRecipe(new ShapelessRecipe(new NamespacedKey(plugin, "obsSharder"),new obsSharder().obsSharder()).addIngredient(Material.SHEARS).addIngredient(Material.DIAMOND));
+        Bukkit.addRecipe(new ShapelessRecipe(new NamespacedKey(plugin, "wandCarver"),new WandCarver().carver()).addIngredient(Material.STICK).addIngredient(Material.OBSIDIAN));
+        Bukkit.addRecipe(new ShapelessRecipe(new NamespacedKey(plugin, "obsSharder"),new OBSSharder().obsSharder()).addIngredient(Material.SHEARS).addIngredient(Material.DIAMOND));
 
 
     }
     public void events() {
 
-        server.getPluginManager().registerEvents(new com.glorial.phoneix.events.events(), plugin);
-        server.getPluginManager().registerEvents(new com.glorial.phoneix.events.playerJoinEvents(), plugin);
-        server.getPluginManager().registerEvents(new commandBlocker(), plugin);
-        server.getPluginManager().registerEvents(new wandCrafter(), plugin);
+        server.getPluginManager().registerEvents(new com.glorial.phoneix.events.Events(), plugin);
+        server.getPluginManager().registerEvents(new com.glorial.phoneix.events.PlayerJoinEvents(), plugin);
+        server.getPluginManager().registerEvents(new CommandBlocker(), plugin);
+        server.getPluginManager().registerEvents(new WandCrafter(), plugin);
         server.getPluginManager().registerEvents(new obsSharderShard(), plugin);
         server.getPluginManager().registerEvents(new wandMechanics(), plugin);
-        server.getPluginManager().registerEvents(new paneBlocker(), plugin);
+        server.getPluginManager().registerEvents(new PaneBlocker(), plugin);
 
     }
     public void spellEvents() {

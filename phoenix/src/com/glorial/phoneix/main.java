@@ -1,6 +1,7 @@
 package com.glorial.phoneix;
 
 
+import com.glorial.phoneix.commands.MainCommand;
 import com.glorial.phoneix.items.register;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -15,7 +16,7 @@ public class main extends JavaPlugin {
     public static HashMap<UUID, String> spellId = new HashMap<>();
     public static HashMap<UUID, Inventory> raisedInv = new HashMap<>();
     public void onEnable() {
-        getCommand(new com.glorial.phoneix.commands.main().grant).setExecutor(new com.glorial.phoneix.commands.main());
+        getCommand(new MainCommand().grant).setExecutor(new MainCommand());
 
 
 

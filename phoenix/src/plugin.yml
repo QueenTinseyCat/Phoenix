@@ -1,9 +1,8 @@
-name: phoenix
-version: 1
+name: Phoenix
+version: 1.0
 main: com.glorial.phoneix.main
-
+authors: [NanMan, Gloria]
 commands:
-
     grant:
         usage: /<command>
         description: Used by ops to grant server items.
