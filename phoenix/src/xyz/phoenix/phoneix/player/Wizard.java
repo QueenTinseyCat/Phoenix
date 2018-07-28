@@ -17,7 +17,8 @@ public class Wizard {
     private Player player;
     private Inventory inv;
     private Type type;
-    private Double level;
+    private List<String> permissions;
+    private double level;
     private Map<Spell, Integer> spellSlot = new HashMap<>();
     private boolean wandRaised = false;
 
