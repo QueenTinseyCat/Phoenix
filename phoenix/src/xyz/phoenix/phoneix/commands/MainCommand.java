@@ -315,14 +315,14 @@ public class MainCommand extends CommandExecute implements Listener, CommandExec
                 }
                 if (args[0].equalsIgnoreCase("obsidian") && args[1].equalsIgnoreCase("sharder")) {
 
-                    ((Player) sender).getInventory().addItem(new OBSSharder().obsSharder());
+                    ((Player) sender).getInventory().addItem(Items.OBSIDIAN_SHARDER.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves an obsidian sharder.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("carving") && args[1].equalsIgnoreCase("knife")) {
 
-                    ((Player) sender).getInventory().addItem(new WandCarver().carver());
+                    ((Player) sender).getInventory().addItem(Items.CARVING_KNIFE.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a carving knife.");
                     return true;
 

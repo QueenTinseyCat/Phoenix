@@ -365,9 +365,83 @@ public enum Items {
             .withFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS)
             .withData((short)1)
             .build()),
-
-
-
+    CARVING_KNIFE(new ItemBuilder()
+            .withMaterial(Material.GOLD_AXE)
+            .withName(ChatColor.WHITE + "Carving Knife")
+            .withLore(Collections.singletonList(ChatColor.WHITE + "Used to carve wand wood."))
+            .withEnchantment(Enchantment.LUCK)
+            .withFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS)
+            .build()),
+    OBSIDIAN_SHARDER(new ItemBuilder()
+            .withMaterial(Material.SHEARS)
+            .withName(ChatColor.DARK_PURPLE + "Yew Wood")
+            .withLore(Collections.singletonList(ChatColor.WHITE + "Forged by Goblins to obtain Obsidian."))
+            .withEnchantment(Enchantment.LUCK)
+            .withFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS)
+            .build()),
+    PANE_1(new ItemBuilder()
+            .withMaterial(Material.STAINED_GLASS_PANE)
+            .withName(ChatColor.GOLD + "1")
+            .withEnchantment(Enchantment.LUCK)
+            .withFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS)
+            .withData((short)1)
+            .build()),
+    PANE_2(new ItemBuilder()
+            .withMaterial(Material.STAINED_GLASS_PANE)
+            .withName(ChatColor.GOLD + "2")
+            .withEnchantment(Enchantment.LUCK)
+            .withFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS)
+            .withData((short)2)
+            .build()),
+    PANE_3(new ItemBuilder()
+            .withMaterial(Material.STAINED_GLASS_PANE)
+            .withName(ChatColor.GOLD + "3")
+            .withEnchantment(Enchantment.LUCK)
+            .withFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS)
+            .withData((short)3)
+            .build()),
+    PANE_4(new ItemBuilder()
+            .withMaterial(Material.STAINED_GLASS_PANE)
+            .withName(ChatColor.GOLD + "4")
+            .withEnchantment(Enchantment.LUCK)
+            .withFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS)
+            .withData((short)4)
+            .build()),
+    PANE_5(new ItemBuilder()
+            .withMaterial(Material.STAINED_GLASS_PANE)
+            .withName(ChatColor.GOLD + "5")
+            .withEnchantment(Enchantment.LUCK)
+            .withFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS)
+            .withData((short)5)
+            .build()),
+    PANE_6(new ItemBuilder()
+            .withMaterial(Material.STAINED_GLASS_PANE)
+            .withName(ChatColor.GOLD + "6")
+            .withEnchantment(Enchantment.LUCK)
+            .withFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS)
+            .withData((short)6)
+            .build()),
+    PANE_7(new ItemBuilder()
+            .withMaterial(Material.STAINED_GLASS_PANE)
+            .withName(ChatColor.GOLD + "7")
+            .withEnchantment(Enchantment.LUCK)
+            .withFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS)
+            .withData((short)10)
+            .build()),
+    PANE_8(new ItemBuilder()
+            .withMaterial(Material.STAINED_GLASS_PANE)
+            .withName(ChatColor.GOLD + "8")
+            .withEnchantment(Enchantment.LUCK)
+            .withFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS)
+            .withData((short)14)
+            .build()),
+    PANE_9(new ItemBuilder()
+            .withMaterial(Material.STAINED_GLASS_PANE)
+            .withName(ChatColor.GOLD + "9")
+            .withEnchantment(Enchantment.LUCK)
+            .withFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS)
+            .withData((short)0)
+            .build()),
     ;
 
 
