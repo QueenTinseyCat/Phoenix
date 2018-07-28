@@ -166,24 +166,24 @@ public class WandCrafter implements Listener {
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.hornbeam())) {
+                        else if(inv.contains(Items.HORNBEAM_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.hornbeam());
+                            inv.remove(Items.HORNBEAM_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.larch())) {
+                        else if(inv.contains(Items.LARCH_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.larch());
+                            inv.remove(Items.LARCH_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.laurel())) {
+                        else if(inv.contains(Items.LAUREL_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.laurel());
+                            inv.remove(Items.LAUREL_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
