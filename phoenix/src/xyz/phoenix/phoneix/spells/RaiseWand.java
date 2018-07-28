@@ -8,12 +8,14 @@ import org.bukkit.inventory.Inventory;
 import static xyz.phoenix.phoneix.Main.raisedInv;
 
 public class RaiseWand {
+
     WandSlots wandslots = new WandSlots();
     public void raiseWand(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         Inventory inv = player.getInventory();
         raisedInv.put(player.getUniqueId(), inv);
         inv.clear();
+
         inv.addItem(wandslots.pane1());
         inv.addItem(wandslots.pane2());
         inv.addItem(wandslots.pane3());
@@ -23,8 +25,6 @@ public class RaiseWand {
         inv.addItem(wandslots.pane7());
         inv.addItem(wandslots.pane8());
         inv.addItem(wandslots.pane9());
-
-
     }
 
 }

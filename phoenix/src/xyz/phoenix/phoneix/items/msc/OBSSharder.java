@@ -10,6 +10,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 
 public class OBSSharder {
+
     public ItemStack obsSharder() {
         ItemStack obsSharder = new ItemStack(Material.SHEARS, 1);
         ItemMeta wobsSharder = obsSharder.getItemMeta();
@@ -22,4 +23,5 @@ public class OBSSharder {
         obsSharder.setItemMeta(wobsSharder);
         return obsSharder;
     }
+
 }

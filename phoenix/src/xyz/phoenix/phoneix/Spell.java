@@ -1,4 +1,7 @@
 package xyz.phoenix.phoneix;
 
-public class Spell {
+public abstract class Spell {
+
+    //Stuff
+
 }

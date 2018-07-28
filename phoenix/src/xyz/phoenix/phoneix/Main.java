@@ -23,7 +23,6 @@ public class Main extends JavaPlugin {
         new register().events();
         new register().spellEvents();
     }
-
     public void onDisable() {
         for(Player player : getServer().getOnlinePlayers()) {
             if(wandStatus.containsKey(player.getUniqueId())) {

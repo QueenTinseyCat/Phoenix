@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class WandSlots {
 
     public ItemStack pane1() {
-
         ItemStack pane = new ItemStack(Material.STAINED_GLASS_PANE, 1, (short)1);
         ItemMeta wPane = pane.getItemMeta();
         wPane.setDisplayName(ChatColor.GOLD + "1");
