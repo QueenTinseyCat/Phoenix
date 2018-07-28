@@ -20,7 +20,7 @@ public class Wizard {
         wizards.add(this);
     }
 
-    public UUID getUuid() {
+    public UUID getUUID() {
         return uuid;
     }
 
@@ -33,7 +33,7 @@ public class Wizard {
     }
     public static Wizard getWizardByUUID(UUID uuid) {
         for (Wizard wizard : wizards) {
-            if(wizard.getUuid().equals(uuid)) return wizard;
+            if(wizard.getUUID().equals(uuid)) return wizard;
         }
         return null;
     }

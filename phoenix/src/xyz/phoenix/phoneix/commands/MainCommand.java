@@ -32,13 +32,13 @@ public class MainCommand extends CommandExecute implements Listener, CommandExec
                 if (args[0].equalsIgnoreCase("unicorn") && args[1].equalsIgnoreCase("hair")) {
 
 
-                    ((Player) sender).getInventory().addItem(WandCores.unicornHair());
+                    ((Player) sender).getInventory().addItem(Items.UNICORN_HAIR.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselve a strand of unicorn hair.");
                     return true;
                 }
 
                 if (args[0].equalsIgnoreCase("dragon") && args[1].equalsIgnoreCase("heartstring")) {
-                    ((Player) sender).getInventory().addItem(WandCores.dragonHeartstring());
+                    ((Player) sender).getInventory().addItem(Items.DRAGON_HEARTSTRING.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselve a dragon's heartstring.");
                     return true;
 
@@ -46,7 +46,7 @@ public class MainCommand extends CommandExecute implements Listener, CommandExec
 
                 if (args[0].equalsIgnoreCase("phoenix") && args[1].equalsIgnoreCase("feather")) {
 
-                    ((Player) sender).getInventory().addItem(WandCores.phoenixFeather());
+                    ((Player) sender).getInventory().addItem(Items.PHOENIX_FEATHER.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselve a feather from a Phoenix.");
                     return true;
 
@@ -54,7 +54,7 @@ public class MainCommand extends CommandExecute implements Listener, CommandExec
 
                 if (args[0].equalsIgnoreCase("serpent") && args[1].equalsIgnoreCase("horn")) {
 
-                    ((Player) sender).getInventory().addItem(WandCores.hornedSerpentsHorn());
+                    ((Player) sender).getInventory().addItem(Items.HORNED_SERPENT_HORN.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselve a horn from a river serpent.");
                     return true;
 
@@ -62,126 +62,119 @@ public class MainCommand extends CommandExecute implements Listener, CommandExec
 
                 if (args[0].equalsIgnoreCase("wampus") && args[1].equalsIgnoreCase("hair")) {
 
-                    ((Player) sender).getInventory().addItem(WandCores.wampusHair());
+                    ((Player) sender).getInventory().addItem(Items.WAMPUS_HAIR.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselve hair from the Wampus cat.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("snallygaster") && args[1].equalsIgnoreCase("heartstring")) {
 
-                    ((Player) sender).getInventory().addItem(WandCores.snallygasterHeartstring());
+                    ((Player) sender).getInventory().addItem(Items.SNALLYGASTER_HEARTSTRING.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselve a heartstring from a snallygaster.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("jackalope") && args[1].equalsIgnoreCase("antlers")) {
 
-                    ((Player) sender).getInventory().addItem(WandCores.jackalopeAntlers());
+                    ((Player) sender).getInventory().addItem(Items.JACKALOPE_ANTLERS.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselve the antlers of a jackalope.");
-                    return true;
-
-                }
-                if (args[0].equalsIgnoreCase("acacia") && args[1].equalsIgnoreCase("wood")) {
-
-                    ((Player) sender).getInventory().addItem(WandWoods.acacia());
-                    Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of acacia wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("alder") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.alder());
+                    ((Player) sender).getInventory().addItem(Items.ALDER_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of alder wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("apple") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.apple());
+                    ((Player) sender).getInventory().addItem(Items.APPLE_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of apple wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("ash") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.ash());
+                    ((Player) sender).getInventory().addItem(Items.ASH_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of ash wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("aspen") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.aspen());
+                    ((Player) sender).getInventory().addItem(Items.ASPEN_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of aspen wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("beech") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.beech());
+                    ((Player) sender).getInventory().addItem(Items.BEECH_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of beech wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("blackthorn") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.blackthorn());
+                    ((Player) sender).getInventory().addItem(Items.BLACKTHORN_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of blackthorn wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("cedar") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.cedar());
+                    ((Player) sender).getInventory().addItem(Items.CEDAR_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of cedar wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("cherry") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.cherry());
+                    ((Player) sender).getInventory().addItem(Items.CHERRY_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of cherry wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("chestnut") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.chestnut());
+                    ((Player) sender).getInventory().addItem(Items.CHESTNUT_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of chestnut wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("cypress") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.cypress());
+                    ((Player) sender).getInventory().addItem(Items.CYPRESS_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of cypress wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("dogwood") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.dogwood());
+                    ((Player) sender).getInventory().addItem(Items.DOGWOOD_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of dogwood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("ebony") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.ebony());
+                    ((Player) sender).getInventory().addItem(Items.EBONY_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of ebony wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("elder") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.elder());
+                    ((Player) sender).getInventory().addItem(Items.ELDER_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of elder wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("elm") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.elm());
+                    ((Player) sender).getInventory().addItem(Items.ELM_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of elm wood.");
                     return true;
 
@@ -189,133 +182,133 @@ public class MainCommand extends CommandExecute implements Listener, CommandExec
 
                 if (args[0].equalsIgnoreCase("fir") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.fir());
+                    ((Player) sender).getInventory().addItem(Items.FIR_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of fir wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("hawthorn") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.hawthorn());
+                    ((Player) sender).getInventory().addItem(Items.HAWTHORN_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of hawthorn wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("hazel") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.hazel());
+                    ((Player) sender).getInventory().addItem(Items.HAZEL_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of hazel wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("holly") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.holly());
+                    ((Player) sender).getInventory().addItem(Items.HOLLY_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of holly wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("hornbeam") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.hornbeam());
+                    ((Player) sender).getInventory().addItem(Items.HORNBEAM_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of hornbeam wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("larch") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.larch());
+                    ((Player) sender).getInventory().addItem(Items.LARCH_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of larch wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("laurel") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.laurel());
+                    ((Player) sender).getInventory().addItem(Items.LAUREL_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of laurel wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("maple") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.maple());
+                    ((Player) sender).getInventory().addItem(Items.MAPLE_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of maple wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("pear") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.pear());
+                    ((Player) sender).getInventory().addItem(Items.PEAR_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of pear wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("pine") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.pine());
+                    ((Player) sender).getInventory().addItem(Items.PINE_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of pine wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("poplar") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.poplar());
+                    ((Player) sender).getInventory().addItem(Items.POPLAR_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of poplar wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("redwood") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.redwood());
+                    ((Player) sender).getInventory().addItem(Items.REDWOOD_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of redwood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("rowan") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.rowan());
+                    ((Player) sender).getInventory().addItem(Items.ROWAN_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of rowan wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("spruce") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.spruce());
+                    ((Player) sender).getInventory().addItem(Items.SPRUCE_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of spruce wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("sycamore") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.sycamore());
+                    ((Player) sender).getInventory().addItem(Items.SYCAMORE_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of sycamore wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("vine") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.vine());
+                    ((Player) sender).getInventory().addItem(Items.VINE_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of vine wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("walnut") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.walnut());
+                    ((Player) sender).getInventory().addItem(Items.WALNUT_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of walnut wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("willow") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.willow());
+                    ((Player) sender).getInventory().addItem(Items.WILLOW_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of willow wood.");
                     return true;
 
                 }
                 if (args[0].equalsIgnoreCase("yew") && args[1].equalsIgnoreCase("wood")) {
 
-                    ((Player) sender).getInventory().addItem(WandWoods.yew());
+                    ((Player) sender).getInventory().addItem(Items.YEW_WOOD.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of yew wood.");
                     return true;
 
@@ -339,28 +332,28 @@ public class MainCommand extends CommandExecute implements Listener, CommandExec
 
                     if (args[0].equalsIgnoreCase("black") && args[1].equalsIgnoreCase("walnut") && args[2].equalsIgnoreCase("wood")) {
 
-                        ((Player) sender).getInventory().addItem(WandWoods.blackWalnut());
+                        ((Player) sender).getInventory().addItem(Items.BLACK_WALNUT_WOOD.getItem());
                         Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of black walnut wood.");
                         return true;
 
                     }
                     if (args[0].equalsIgnoreCase("english") && args[1].equalsIgnoreCase("oak") && args[2].equalsIgnoreCase("wood")) {
 
-                        ((Player) sender).getInventory().addItem(WandWoods.englishOak());
+                        ((Player) sender).getInventory().addItem(Items.ENGLISH_OAK_WOOD.getItem());
                         Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of English oak wood.");
                         return true;
 
                     }
                     if (args[0].equalsIgnoreCase("red") && args[1].equalsIgnoreCase("oak") && args[2].equalsIgnoreCase("wood")) {
 
-                        ((Player) sender).getInventory().addItem(WandWoods.redOak());
+                        ((Player) sender).getInventory().addItem(Items.RED_OAK_WOOD.getItem());
                         Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of red oak wood.");
                         return true;
 
                     }
                     if (args[0].equalsIgnoreCase("silver") && args[1].equalsIgnoreCase("lime") && args[2].equalsIgnoreCase("wood")) {
 
-                        ((Player) sender).getInventory().addItem(WandWoods.silverLime());
+                        ((Player) sender).getInventory().addItem(Items.SILVER_LIME_WOOD.getItem());
                         Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a bowtruckle infested piece of silver lime wood.");
                         return true;
 
