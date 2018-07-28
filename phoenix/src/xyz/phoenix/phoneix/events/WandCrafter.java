@@ -9,12 +9,10 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import xyz.phoenix.phoneix.items.wands.Items;
-import xyz.phoenix.phoneix.items.wands.WandCores;
-import xyz.phoenix.phoneix.items.wands.WandWoods;
+
 
 public class WandCrafter implements Listener {
-WandCores wandCores= new WandCores();
-WandWoods wandWoods = new WandWoods();
+
 
 @EventHandler
     public void playerInteractBedrock(PlayerInteractEvent event) {
@@ -27,157 +25,144 @@ WandWoods wandWoods = new WandWoods();
                 if(player.getInventory().getItemInMainHand() != null && player.getInventory().getItemInMainHand().hasItemMeta() && player.getInventory().getItemInMainHand().getItemMeta().getDisplayName() != null) {
 
                     if(player.getInventory().getItemInMainHand().getItemMeta().getDisplayName().equals(ChatColor.WHITE + "Carving Knife")) {
-                        if(inv.contains(wandWoods.elder())) {
+                        if(inv.contains(Items.ELDER_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.elder());
+                            inv.remove(Items.ELDER_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.acacia())) {
+                        else if(inv.contains(Items.ALDER_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.acacia());
+                            inv.remove(Items.ALDER_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.alder())) {
+                        else if(inv.contains(Items.APPLE_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.alder());
+                            inv.remove(Items.APPLE_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.apple())) {
+                        else if(inv.contains(Items.ASH_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.apple());
+                            inv.remove(Items.ASH_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.ash())) {
+                        else if(inv.contains(Items.ASPEN_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.ash());
+                            inv.remove(Items.ASPEN_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.aspen())) {
+                        else if(inv.contains(Items.BEECH_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.aspen());
+                            inv.remove(Items.BEECH_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.beech())) {
+                        else if(inv.contains(Items.BLACKTHORN_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.beech());
+                            inv.remove(Items.BLACKTHORN_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.blackthorn())) {
+                        else if(inv.contains(Items.BLACK_WALNUT_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.blackthorn());
+                            inv.remove(Items.BLACK_WALNUT_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.blackWalnut())) {
+                        else if(inv.contains(Items.CEDAR_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.blackWalnut());
+                            inv.remove(Items.CEDAR_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.cedar())) {
+                        else if(inv.contains(Items.CHERRY_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.cedar());
+                            inv.remove(Items.CHERRY_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.cherry())) {
+                        else if(inv.contains(Items.CHESTNUT_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.cherry());
+                            inv.remove(Items.CHESTNUT_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.chestnut())) {
+
+                        else if(inv.contains(Items.CYPRESS_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.chestnut());
+                            inv.remove(Items.CYPRESS_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.cedar())) {
+                        else if(inv.contains(Items.DOGWOOD_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.cedar());
+                            inv.remove(Items.DOGWOOD_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.cypress())) {
+                        else if(inv.contains(Items.EBONY_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.cypress());
+                            inv.remove(Items.EBONY_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.dogwood())) {
+                        else if(inv.contains(Items.ELM_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.dogwood());
+                            inv.remove(Items.ELM_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.ebony())) {
+                        else if(inv.contains(Items.ENGLISH_OAK_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.ebony());
+                            inv.remove(Items.ENGLISH_OAK_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.elm())) {
+                        else if(inv.contains(Items.FIR_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.elm());
+                            inv.remove(Items.FIR_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.englishOak())) {
+                        else if(inv.contains(Items.HAWTHORN_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.englishOak());
+                            inv.remove(Items.HAWTHORN_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.fir())) {
+                        else if(inv.contains(Items.HAZEL_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.fir());
+                            inv.remove(Items.HAZEL_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
-                        else if(inv.contains(wandWoods.hawthorn())) {
+                        else if(inv.contains(Items.HOLLY_WOOD.getItem())) {
 
 
-                            inv.remove(wandWoods.hawthorn());
-                            player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
-
-                        }
-                        else if(inv.contains(wandWoods.hazel())) {
-
-
-                            inv.remove(wandWoods.hazel());
-                            player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
-
-                        }
-                        else if(inv.contains(wandWoods.holly())) {
-
-
-                            inv.remove(wandWoods.holly());
+                            inv.remove(Items.HOLLY_WOOD.getItem());
                             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_GRAY + "" + ChatColor.ITALIC + "removed wand wood");
 
                         }
