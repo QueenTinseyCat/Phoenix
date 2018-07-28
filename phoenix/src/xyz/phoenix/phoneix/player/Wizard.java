@@ -1,4 +1,4 @@
-package xyz.phoenix.phoneix;
+package xyz.phoenix.phoneix.player;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;

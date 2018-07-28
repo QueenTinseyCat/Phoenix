@@ -5,7 +5,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import xyz.phoenix.phoneix.Wizard;
+import xyz.phoenix.phoneix.player.Wizard;
 
 public class EventJoin implements Listener {
 

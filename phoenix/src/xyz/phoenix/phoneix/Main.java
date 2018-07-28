@@ -41,6 +41,7 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new EventJoin(), this);
         pm.registerEvents(new EventKick(), this);
         pm.registerEvents(new EventPlayerInteract(), this);
+        pm.registerEvents(new EventWandMechanics(), this);
     }
 
     private void setupCraftables() {
@@ -53,7 +54,6 @@ public class Main extends JavaPlugin {
                 .addIngredient(Material.SHEARS)
                 .addIngredient(Material.DIAMOND));
     }
-
     public void onDisable() {
         for(Player player : getServer().getOnlinePlayers()) {
             if(wandStatus.containsKey(player.getUniqueId())) {

@@ -1,4 +1,4 @@
-package xyz.phoenix.phoneix;
+package xyz.phoenix.phoneix.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -117,6 +117,25 @@ public class ItemBuilder {
     }
     private static Class getClass(String path, String clazz) throws ClassNotFoundException {
         return Class.forName(path + "." + VERSION + "." + clazz);
+    }
+
+    /**
+     * Example: ItemBuilder.get("wand");
+     *
+     * @param key <K> in <K, V>
+     * @return<K, V> returns key to value generic; null if not found.
+     */
+    public static String get(ItemStack item, String key) {
+        try {
+            Object itemstack = asNMSCopy.invoke(null, item);
+            Object compound = getOrCreateTag.invoke(itemstack);
+
+            return (String) getString.invoke(compound, key);
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            //Shouldn't happen, so no worries.
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

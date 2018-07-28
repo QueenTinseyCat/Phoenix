@@ -5,7 +5,7 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
-import xyz.phoenix.phoneix.ItemBuilder;
+import xyz.phoenix.phoneix.utils.ItemBuilder;
 
 import java.util.Arrays;
 import java.util.Collections;
