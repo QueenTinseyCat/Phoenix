@@ -16,7 +16,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 public class EventPlayerInteract implements Listener {
 
     @EventHandler
-    public void playerInteractBedrock(PlayerInteractEvent event) {
+    public void playerInteractObsidian(PlayerInteractEvent event) {
         Player player = event.getPlayer();
         if (event.getAction() != Action.LEFT_CLICK_BLOCK) return;
         PlayerInventory inv = player.getInventory();

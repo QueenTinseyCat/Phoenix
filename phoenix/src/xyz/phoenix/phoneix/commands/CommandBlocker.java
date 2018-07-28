@@ -9,7 +9,7 @@ import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 
 public class CommandBlocker implements Listener {
 
-    private String[] blockedCommands = {"fill", "clone"};
+    private String[] blockedCommands = {"fill", "clone", ""};
 
     @EventHandler(priority = EventPriority.HIGHEST)
     public void onCommand(PlayerCommandPreprocessEvent e){
