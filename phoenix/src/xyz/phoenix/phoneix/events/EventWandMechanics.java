@@ -11,7 +11,6 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.inventory.meta.ItemMeta;
-import xyz.phoenix.phoneix.Main;
 import xyz.phoenix.phoneix.player.Wizard;
 
 public class EventWandMechanics implements Listener {
@@ -39,8 +38,8 @@ public class EventWandMechanics implements Listener {
 
         if (!wizard.isWandRaised()) {
             player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.GRAY + "" + ChatColor.ITALIC + "raised wand");
-            Main.wandStatus.remove(player.getUniqueId());
-            Main.wandStatus.put(player.getUniqueId(), "raised");
+//            Main.wandStatus.remove(player.getUniqueId());
+//            Main.wandStatus.put(player.getUniqueId(), "raised");
             //Raise wand
             return;
         }
@@ -48,16 +47,14 @@ public class EventWandMechanics implements Listener {
             if (wizard.isWandRaised()) {
                 if (player.isSneaking()) {
                     //I don't know what the fuck this is so... I'm leaving it for now.
-                    if (Main.spellId.containsKey(player.getUniqueId())) {
-                        Main.spellId.remove(player.getUniqueId());
-                    }
-                    player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.GRAY + "" + ChatColor.ITALIC + "lowered wand");
-                    Main.wandStatus.remove(player.getUniqueId());
-                    Main.wandStatus.put(player.getUniqueId(), "lowered");
-                    return;
+//                    if (Main.spellId.containsKey(player.getUniqueId())) {
+//                        Main.spellId.remove(player.getUniqueId());
                 }
+                player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.GRAY + "" + ChatColor.ITALIC + "lowered wand");
+//                    Main.wandStatus.remove(player.getUniqueId());
+//                    Main.wandStatus.put(player.getUniqueId(), "lowered");
+                return;
             }
         }
     }
-
 }
