@@ -1,7 +1,5 @@
 package xyz.phoenix.phoneix.commands;
 
-import xyz.phoenix.phoneix.items.msc.OBSSharder;
-import xyz.phoenix.phoneix.items.wands.Items;
 import net.minecraft.server.v1_12_R1.CommandExecute;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -10,6 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import xyz.phoenix.phoneix.items.wands.Items;
 
 public class MainCommand extends CommandExecute implements Listener, CommandExecutor {
 
@@ -24,10 +23,7 @@ public class MainCommand extends CommandExecute implements Listener, CommandExec
         Player player = (Player) sender;
         if (player.isWhitelisted()) {
             if (args.length > 1) {
-
                 if (args[0].equalsIgnoreCase("unicorn") && args[1].equalsIgnoreCase("hair")) {
-
-
                     ((Player) sender).getInventory().addItem(Items.UNICORN_HAIR.getItem());
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselve a strand of unicorn hair.");
                     return true;

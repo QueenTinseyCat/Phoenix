@@ -14,8 +14,6 @@ public class RaiseWand {
         Inventory inv = player.getInventory();
         raisedInv.put(player.getUniqueId(), inv);
         inv.clear();
-
-
     }
 
 }

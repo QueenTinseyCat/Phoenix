@@ -16,28 +16,24 @@ public class Wizard {
 
     private Player player;
     private Inventory inv;
+    private Type type;
     private Map<Spell, Integer> spellSlot = new HashMap<>();
     private boolean wandRaised = false;
 
-    public Wizard(Player player, Inventory inv, Map<Spell, Integer> spellSlot) {
+    public Wizard(Player player, Type type) {
         this.player = player;
-        this.inv = inv;
-        this.spellSlot = spellSlot;
-        this.inv = player.getInventory();
+        this.type = type;
+        //We'll load the spells from config later (if we plan on saving them)
 
         wizards.add(this);
     }
-    public Player getPlayer() {
-        return player;
-    }
-    public Inventory getInv() {
-        return inv;
-    }
-    public boolean isWandRaised() {
-        return wandRaised;
-    }
+
+    /**
+     * Loads panes into {@link Wizard#getPlayer()}'s cleared inventory. Also sets {@link Wizard#getSavedInventory()}.
+     */
     private void loadPanes() {
         wandRaised = true;
+        this.inv = player.getInventory();
 
         player.getInventory().clear();
 
@@ -51,6 +47,10 @@ public class Wizard {
         inv.addItem(Items.PANE_8.getItem());
         inv.addItem(Items.PANE_9.getItem());
     }
+
+    /**
+     * Restores {@link Wizard#getPlayer()}'s original inventory after modifying panes.
+     */
     private void restoreInventory() {
         this.wandRaised = false;
         player.getInventory().clear();
@@ -62,13 +62,52 @@ public class Wizard {
         }
     }
 
-    public Map<Spell, Integer> getSpellSlot() {
-        return spellSlot;
-    }
+    /**
+     * @param p Player you're trying to get the wizard class for.
+     * @return Player's wizard object; else null.
+     */
     public static Wizard getWizardByPlayer(Player p) {
         for (Wizard wizard : wizards) {
             if(wizard.getPlayer().equals(p)) return wizard;
         }
         return null;
+    }
+    public enum Type {
+        HORNED_SERPENT,
+        THUNDERBIRD,
+        WAMPUS,
+        PUKWUDGIE;
+    }
+
+    /*
+    Everything below is getters and getters only (for organization)
+     */
+
+    public boolean isWandRaised() {
+        return wandRaised;
+    }
+    public Player getPlayer() {
+        return player;
+    }
+    public Inventory getSavedInventory() {
+        return inv;
+    }
+    public static List<Wizard> getWizards() {
+        return wizards;
+    }
+    public Map<Spell, Integer> getSpellSlot() {
+        return spellSlot;
+    }
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+    public void setInv(Inventory inv) {
+        this.inv = inv;
+    }
+    public void setSpellSlot(Map<Spell, Integer> spellSlot) {
+        this.spellSlot = spellSlot;
+    }
+    public void setWandRaised(boolean wandRaised) {
+        this.wandRaised = wandRaised;
     }
 }
