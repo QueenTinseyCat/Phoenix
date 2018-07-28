@@ -2,9 +2,6 @@ package xyz.phoenix.phoneix.commands;
 
 import xyz.phoenix.phoneix.items.msc.OBSSharder;
 import xyz.phoenix.phoneix.items.wands.Items;
-import xyz.phoenix.phoneix.items.wands.WandCarver;
-import xyz.phoenix.phoneix.items.wands.WandCores;
-import xyz.phoenix.phoneix.items.wands.WandWoods;
 import net.minecraft.server.v1_12_R1.CommandExecute;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -27,8 +24,7 @@ public class MainCommand extends CommandExecute implements Listener, CommandExec
         Player player = (Player) sender;
         if (player.isWhitelisted()) {
             if (args.length > 1) {
-                WandCores WandCores = new WandCores();
-                WandWoods WandWoods = new WandWoods();
+
                 if (args[0].equalsIgnoreCase("unicorn") && args[1].equalsIgnoreCase("hair")) {
 
 
