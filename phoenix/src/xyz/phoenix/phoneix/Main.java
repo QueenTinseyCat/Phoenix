@@ -3,8 +3,7 @@ package xyz.phoenix.phoneix;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.Inventory;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -12,28 +11,36 @@ import xyz.phoenix.phoneix.commands.MainCommand;
 import xyz.phoenix.phoneix.events.*;
 import xyz.phoenix.phoneix.items.wands.Items;
 
-import java.util.HashMap;
-import java.util.UUID;
+import java.io.File;
+import java.io.IOException;
 
 public class Main extends JavaPlugin {
 
-    public static HashMap<UUID, String> spellsSpoken = new HashMap<>();
-    public static HashMap<UUID, String> wandStatus = new HashMap<>();
-    public static HashMap<UUID, String> spellId = new HashMap<>();
-    public static HashMap<UUID, Inventory> raisedInv = new HashMap<>();
+    public static Main INSTANCE;
+
+    public static Main getInstance() {
+        return INSTANCE;
+    }
+
+    private YamlConfiguration wizardsConfig;
 
     public void onEnable() {
-        getCommand("grant").setExecutor(new MainCommand());
-
         setup();
     }
 
     private void setup() {
+        INSTANCE = this;
+
         setupCraftables();
-        setupEvents();
+        setupEventsAndCommands();
+        generateWizardsYaml();
     }
 
-    private void setupEvents() {
+    private void setupEventsAndCommands() {
+        //Commands
+        getCommand("grant").setExecutor(new MainCommand());
+
+        //Events
         PluginManager pm = Bukkit.getPluginManager();
 
         pm.registerEvents(new EventBlockPlace(), this);
@@ -42,6 +49,7 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new EventKick(), this);
         pm.registerEvents(new EventPlayerInteract(), this);
         pm.registerEvents(new EventWandMechanics(), this);
+        pm.registerEvents(new EventQuit(), this);
     }
 
     private void setupCraftables() {
@@ -54,19 +62,24 @@ public class Main extends JavaPlugin {
                 .addIngredient(Material.SHEARS)
                 .addIngredient(Material.DIAMOND));
     }
-    public void onDisable() {
-        for(Player player : getServer().getOnlinePlayers()) {
-            if(wandStatus.containsKey(player.getUniqueId())) {
-
-                if(wandStatus.get(player.getUniqueId()).equals("raised")) {
-
-                    //lower wand
-
-                }
-
+    private void generateWizardsYaml() {
+        File file = new File(getDataFolder(), "wizards.yml");
+        if(!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                Bukkit.getLogger().info(String.format("[%s] - Could not create wizards.yml.", getName()));
+                Bukkit.getPluginManager().disablePlugin(this);
             }
-
         }
+        this.wizardsConfig = YamlConfiguration.loadConfiguration(file);
+    }
+
+    public YamlConfiguration getWizardConfig() {
+        return wizardsConfig;
+    }
+
+    public void onDisable() {
 
     }
 }

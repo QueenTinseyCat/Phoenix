@@ -1,18 +1,28 @@
 package xyz.phoenix.phoneix.player;
 
+import net.md_5.bungee.api.ChatColor;
+import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import xyz.phoenix.phoneix.Main;
 import xyz.phoenix.phoneix.items.wands.Items;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
 
 public class Wizard {
 
+    static Main main;
+    static YamlConfiguration yaml;
     static List<Wizard> wizards = new ArrayList<>();
+
+    static {
+        main = Main.getInstance();
+        yaml = main.getWizardConfig();
+    }
 
     private Player player;
     private Inventory inv;
@@ -21,11 +31,16 @@ public class Wizard {
     private double level;
     private Map<Spell, Integer> spellSlot = new HashMap<>();
     private boolean wandRaised = false;
-        //Save type, permissions, level, UUID in config
-    public Wizard(Player player, Type type) {
+
+    //Save type, permissions, level, UUID in config
+    public Wizard(Player player) {
         this.player = player;
-        this.type = type;
-        //We'll load the spells from config later (if we plan on saving them)
+        UUID uuid = player.getUniqueId();
+        //Loading info from config into memory
+        this.permissions = yaml.getStringList(uuid + ".permissions");
+        this.type = Type.valueOf(yaml.getString(uuid + ".type"));
+        if(type == null) Bukkit.getOnlinePlayers().forEach(e -> { if(e.isOp()) e.sendMessage(ChatColor.DARK_RED + player.getName() + ChatColor.RED + "'s type is null!"); });
+        this.level = yaml.getDouble(uuid + ".level");
 
         wizards.add(this);
     }
@@ -80,11 +95,27 @@ public class Wizard {
         WAMPUS,
         PUKWUDGIE;
     }
+    public void save() {
+        UUID uuid = player.getUniqueId();
+
+        yaml.set(uuid + ".type", this.getType().name());
+        yaml.set(uuid + ".level", level);
+        yaml.set(uuid + ".permissions", permissions);
+
+        try {
+            yaml.save(new File(main.getDataFolder(), "wizards.yml"));
+        } catch (IOException e) {
+            Bukkit.getLogger().info(String.format("Failed to save data for wizard '%s'", player.getName()));
+        }
+    }
 
     /*
     Everything below is getters and getters only (for organization)
      */
 
+    public Type getType() {
+        return type;
+    }
     public boolean isWandRaised() {
         return wandRaised;
     }
