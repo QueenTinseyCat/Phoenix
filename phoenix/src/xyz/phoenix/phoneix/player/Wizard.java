@@ -21,7 +21,7 @@ public class Wizard {
     private double level;
     private Map<Spell, Integer> spellSlot = new HashMap<>();
     private boolean wandRaised = false;
-
+        //Save type, permissions, level, UUID in config
     public Wizard(Player player, Type type) {
         this.player = player;
         this.type = type;
