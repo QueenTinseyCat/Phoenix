@@ -80,6 +80,7 @@ public class Wizard {
         WAMPUS,
         PUKWUDGIE;
     }
+    //comment so i can push
 
     /*
     Everything below is getters and getters only (for organization)
