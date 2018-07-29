@@ -8,10 +8,12 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import xyz.phoenix.phoneix.Main;
 import xyz.phoenix.phoneix.items.wands.Items;
+import xyz.phoenix.phoneix.spells.Spell;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Wizard {
 
@@ -38,7 +40,7 @@ public class Wizard {
         UUID uuid = player.getUniqueId();
         //Loading info from config into memory
         this.permissions = yaml.getStringList(uuid + ".permissions");
-        this.type = Type.valueOf(yaml.getString(uuid + ".type"));
+        this.type = yaml.isSet(uuid + ".type") ? Type.valueOf(yaml.getString(uuid + ".type")) : Type.values()[ThreadLocalRandom.current().nextInt(Type.values().length - 1)];
         if(type == null) Bukkit.getOnlinePlayers().forEach(e -> { if(e.isOp()) e.sendMessage(ChatColor.DARK_RED + player.getName() + ChatColor.RED + "'s type is null!"); });
         this.level = yaml.getDouble(uuid + ".level");
 
