@@ -17,6 +17,8 @@ public class CommandBlocker implements Listener {
         String dont = ChatColor.RED + "\"Please don't do that\" - " + ChatColor.BLUE + "Glorial";
         String command = e.getMessage().toLowerCase();
 
+        if(p.isOp()) return;
+
         for(String s : blockedCommands) {
             if(command.equalsIgnoreCase(s)) {
                 p.sendMessage(dont);

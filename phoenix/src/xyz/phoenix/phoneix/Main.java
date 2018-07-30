@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import xyz.phoenix.phoneix.commands.CommandBlocker;
 import xyz.phoenix.phoneix.commands.MainCommand;
 import xyz.phoenix.phoneix.events.*;
 import xyz.phoenix.phoneix.items.wands.Items;
@@ -41,11 +42,11 @@ public class Main extends JavaPlugin {
 
     private void setupEventsAndCommands() {
         //Commands
-        getCommand("grant").setExecutor(new MainCommand());
+        getCommand("/grant").setExecutor(new MainCommand());
 
         //Events
         PluginManager pm = Bukkit.getPluginManager();
-
+        pm.registerEvents(new CommandBlocker(), this);
         pm.registerEvents(new EventBlockPlace(), this);
         pm.registerEvents(new EventDropItemPlayer(), this);
         pm.registerEvents(new EventJoin(), this);
