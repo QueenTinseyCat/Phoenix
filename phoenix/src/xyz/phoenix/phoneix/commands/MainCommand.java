@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import xyz.phoenix.phoneix.items.wands.Items;
 
-public class MainCommand extends CommandExecute implements CommandExecutor, Listener  {
+public class MainCommand implements CommandExecutor  {
 
 
 
