@@ -10,17 +10,19 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import xyz.phoenix.phoneix.items.wands.Items;
 
-public class MainCommand extends CommandExecute implements Listener, CommandExecutor {
+public class MainCommand implements CommandExecutor {
 
     public String grant = "grant";
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        Player player = (Player) sender;
+        player.sendMessage("test");
         if (!(sender instanceof Player)) {
             sender.sendMessage("You are sending this command via console, therefore you cannot continue.");
             return true;
         }
-        Player player = (Player) sender;
+
         if (player.isWhitelisted()) {
             if (args.length > 1) {
                 if (args[0].equalsIgnoreCase("unicorn") && args[1].equalsIgnoreCase("hair")) {
