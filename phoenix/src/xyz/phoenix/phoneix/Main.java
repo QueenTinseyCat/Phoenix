@@ -42,7 +42,8 @@ public class Main extends JavaPlugin {
 
     private void setupEventsAndCommands() {
         //Commands
-        getCommand("/grant").setExecutor(new MainCommand());
+      // does it need to be /grant?
+        getCommand("grant").setExecutor(new MainCommand());
 
         //Events
         PluginManager pm = Bukkit.getPluginManager();
