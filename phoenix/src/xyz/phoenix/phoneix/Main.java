@@ -1,5 +1,6 @@
 package xyz.phoenix.phoneix;
 
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -55,6 +56,7 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new EventPlayerInteract(), this);
         pm.registerEvents(new EventWandMechanics(), this);
         pm.registerEvents(new EventQuit(), this);
+        pm.registerEvents(new EventWeatherChange(), this);
     }
     private void setupCraftables() {
         Bukkit.addRecipe(new ShapelessRecipe(new NamespacedKey(this, "wandCarver"),
@@ -76,12 +78,19 @@ public class Main extends JavaPlugin {
         }
     }
     private void generateWizardsYaml() {
-        File file = new File(getDataFolder(), "wizards.yml");
+
+
+        File file = new File( "Phoenix/wizards.yml");
         if(!file.exists()) {
             try {
+                Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Attempting to create wizards.yml...");
+
                 file.createNewFile();
+                Bukkit.getConsoleSender().sendMessage("wizards.yml created");
+
             } catch (IOException e) {
-                Bukkit.getLogger().info(String.format("[%s] - Could not create wizards.yml.", getName()));
+
+                Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[Phoenix] - Could not create wizards.yml.");
                 Bukkit.getPluginManager().disablePlugin(this);
             }
         }
