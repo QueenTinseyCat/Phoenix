@@ -9,6 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import xyz.phoenix.phoneix.items.wands.Items;
+import xyz.phoenix.phoneix.player.Wizard;
 
 public class CMDGrant implements CommandExecutor  {
 
@@ -23,7 +24,7 @@ public class CMDGrant implements CommandExecutor  {
             return true;
         }
         Player player = (Player) sender;
-        if (player.isWhitelisted()) {
+        if (Wizard.getWizardByPlayer(player).getPerms().contains("admin")) {
             if (args.length > 1) {
                 if (args[0].equalsIgnoreCase("unicorn") && args[1].equalsIgnoreCase("hair")) {
                     ((Player) sender).getInventory().addItem(Items.UNICORN_HAIR.getItem());
@@ -387,7 +388,7 @@ public class CMDGrant implements CommandExecutor  {
             }
 
         } else {
-            sender.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.RED + "Sorry, you can't do that! You must be an op to use Grant.");
+            sender.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.RED + "Sorry, you can't do that! You must be an admin to use /grant.");
             return true;
         }
     }

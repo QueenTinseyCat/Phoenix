@@ -21,7 +21,9 @@ public class EventJoin implements Listener {
         //Create Wizard class for player. This is the object we'll address all their stats when looking for.
 
         //We'll assign the type from config
+
         Wizard wizard = new Wizard(player);
+
     }
 
 }

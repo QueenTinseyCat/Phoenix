@@ -45,6 +45,7 @@ public class Wizard {
         this.level = yaml.getDouble(uuid + ".level");
 
         wizards.add(this);
+        getWizardByPlayer(player).save();
     }
 
     /**
@@ -65,6 +66,16 @@ public class Wizard {
         inv.addItem(Items.PANE_7.getItem());
         inv.addItem(Items.PANE_8.getItem());
         inv.addItem(Items.PANE_9.getItem());
+    }
+    public void addPerm(String Perm) {
+        permissions.add(Perm);
+        save();
+
+    }
+
+    public void removePerm(String perm) {
+        permissions.remove(perm);
+        save();
     }
 
     /**
@@ -95,26 +106,29 @@ public class Wizard {
         HORNED_SERPENT,
         THUNDERBIRD,
         WAMPUS,
+        UNSORTED,
         PUKWUDGIE;
     }
     public void save() {
+
         UUID uuid = player.getUniqueId();
 
         yaml.set(uuid + ".type", this.getType().name());
         yaml.set(uuid + ".level", level);
         yaml.set(uuid + ".permissions", permissions);
-
         try {
-            yaml.save(new File("Phoenix/wizards.yml"));
-        } catch (IOException e) {
-            Bukkit.getLogger().info(String.format("Failed to save data for wizard '%s'", player.getName()));
+            yaml.save(Main.getInstance().getDataFolder().getPath() + "/wizards.yml");
+
+        }catch (IOException e) {
+            Bukkit.broadcastMessage(org.bukkit.ChatColor.RED + "COULD NOT SAVE WIZARDS.YML");
         }
+
     }
 
     /*
     Everything below is getters and getters only (for organization)
      */
-
+    public List getPerms() {return permissions;}
     public Type getType() {
         return type;
     }
