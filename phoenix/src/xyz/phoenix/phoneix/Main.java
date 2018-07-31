@@ -9,8 +9,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import xyz.phoenix.phoneix.commands.CMDStaff;
 import xyz.phoenix.phoneix.commands.CommandBlocker;
-import xyz.phoenix.phoneix.commands.MainCommand;
+import xyz.phoenix.phoneix.commands.CMDGrant;
 import xyz.phoenix.phoneix.events.*;
 import xyz.phoenix.phoneix.items.wands.Items;
 import xyz.phoenix.phoneix.player.Wizard;
@@ -28,6 +29,7 @@ public class Main extends JavaPlugin {
 
     private YamlConfiguration wizardsConfig;
 
+
     public void onEnable() {
         setup();
     }
@@ -43,9 +45,9 @@ public class Main extends JavaPlugin {
 
     private void setupEventsAndCommands() {
         //Commands
-      // does it need to be /grant?
-        getCommand("grant").setExecutor(new MainCommand());
 
+        getCommand("grant").setExecutor(new CMDGrant());
+        getCommand("perm").setExecutor(new CMDStaff());
         //Events
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new CommandBlocker(), this);
@@ -77,22 +79,27 @@ public class Main extends JavaPlugin {
             Wizard wizard = new Wizard(player);
         }
     }
+
     private void generateWizardsYaml() {
 
 
-        File file = new File( "Phoenix/wizards.yml");
+        File file = new File( getDataFolder(), "wizards.yml");
         if(!file.exists()) {
-            try {
-                Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "Attempting to create wizards.yml...");
 
-                file.createNewFile();
-                Bukkit.getConsoleSender().sendMessage("wizards.yml created");
+                    Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "[Phoenix] - Attempting to create wizards.yml...");
 
-            } catch (IOException e) {
 
-                Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[Phoenix] - Could not create wizards.yml.");
-                Bukkit.getPluginManager().disablePlugin(this);
-            }
+
+                try {
+                    file.getParentFile().mkdirs();
+                    file.createNewFile();
+                    wizardsConfig.save(getDataFolder() + "/wizards.yml");
+                }catch (Exception a) {
+                    System.out.println("couldnt save file");
+                }
+                Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "[Phoenix] - wizards.yml created");
+
+
         }
         this.wizardsConfig = YamlConfiguration.loadConfiguration(file);
     }
@@ -100,6 +107,7 @@ public class Main extends JavaPlugin {
     public YamlConfiguration getWizardConfig() {
         return wizardsConfig;
     }
+
 
     public void onDisable() {
 

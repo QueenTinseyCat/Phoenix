@@ -105,7 +105,7 @@ public class Wizard {
         yaml.set(uuid + ".permissions", permissions);
 
         try {
-            yaml.save(new File(main.getDataFolder(), "wizards.yml"));
+            yaml.save(new File("Phoenix/wizards.yml"));
         } catch (IOException e) {
             Bukkit.getLogger().info(String.format("Failed to save data for wizard '%s'", player.getName()));
         }
