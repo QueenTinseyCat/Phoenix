@@ -27,6 +27,7 @@ public class Wizard {
     }
 
     private Player player;
+    private String name;
     private Inventory inv;
     private Type type;
     private List<String> permissions;
@@ -39,13 +40,15 @@ public class Wizard {
         this.player = player;
         UUID uuid = player.getUniqueId();
         //Loading info from config into memory
+        this.name = yaml.getString(uuid + ".name");
         this.permissions = yaml.getStringList(uuid + ".permissions");
-        this.type = yaml.isSet(uuid + ".type") ? Type.valueOf(yaml.getString(uuid + ".type")) : Type.values()[ThreadLocalRandom.current().nextInt(Type.values().length - 1)];
-        if(type == null) Bukkit.getOnlinePlayers().forEach(e -> { if(e.isOp()) e.sendMessage(ChatColor.DARK_RED + player.getName() + ChatColor.RED + "'s type is null!"); });
+        this.type = yaml.isSet(uuid + ".type") ? Type.valueOf(yaml.getString(uuid + ".type")) : Type.UNSORTED;
+
         this.level = yaml.getDouble(uuid + ".level");
 
         wizards.add(this);
-        getWizardByPlayer(player).save();
+
+        save();
     }
 
     /**
@@ -75,6 +78,11 @@ public class Wizard {
 
     public void removePerm(String perm) {
         permissions.remove(perm);
+        save();
+    }
+
+    public void setType(Type newType) {
+        type = newType;
         save();
     }
 
@@ -116,6 +124,7 @@ public class Wizard {
         yaml.set(uuid + ".type", this.getType().name());
         yaml.set(uuid + ".level", level);
         yaml.set(uuid + ".permissions", permissions);
+        yaml.set(uuid + ".name", player.getDisplayName());
         try {
             yaml.save(Main.getInstance().getDataFolder().getPath() + "/wizards.yml");
 
@@ -125,9 +134,6 @@ public class Wizard {
 
     }
 
-    /*
-    Everything below is getters and getters only (for organization)
-     */
     public List getPerms() {return permissions;}
     public Type getType() {
         return type;
@@ -149,6 +155,9 @@ public class Wizard {
     }
     public void setPlayer(Player player) {
         this.player = player;
+    }
+    public String getName() {
+       return this.name;
     }
     public void setInv(Inventory inv) {
         this.inv = inv;

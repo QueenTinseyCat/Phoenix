@@ -9,12 +9,14 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import xyz.phoenix.phoneix.commands.CMDHouse;
 import xyz.phoenix.phoneix.commands.CMDStaff;
 import xyz.phoenix.phoneix.commands.CommandBlocker;
 import xyz.phoenix.phoneix.commands.CMDGrant;
 import xyz.phoenix.phoneix.events.*;
 import xyz.phoenix.phoneix.items.wands.Items;
 import xyz.phoenix.phoneix.player.Wizard;
+import xyz.phoenix.phoneix.regionChat.onChat;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,6 +50,7 @@ public class Main extends JavaPlugin {
 
         getCommand("grant").setExecutor(new CMDGrant());
         getCommand("perm").setExecutor(new CMDStaff());
+        getCommand("house").setExecutor(new CMDHouse());
         //Events
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new CommandBlocker(), this);
@@ -59,6 +62,7 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new EventWandMechanics(), this);
         pm.registerEvents(new EventQuit(), this);
         pm.registerEvents(new EventWeatherChange(), this);
+        pm.registerEvents(new onChat(), this);
     }
     private void setupCraftables() {
         Bukkit.addRecipe(new ShapelessRecipe(new NamespacedKey(this, "wandCarver"),

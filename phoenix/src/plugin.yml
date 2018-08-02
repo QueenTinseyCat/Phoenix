@@ -1,11 +1,15 @@
 name: Phoenix
 version: 1.0
 main: xyz.phoenix.phoneix.Main
-authors: [NanMan, Glorial]
+author: Glorial
 commands:
     grant:
-        usage: /<command>
+        usage: /<command> <item>
         description: Used by ops to grant server items.
     perm:
-        usage: /<command>
-        description: Used by admins to give people permissions, example, "/perm add Glorial admin", do "/perm list" to see all perms!
+        usage: /<command> <add/remove> <player> <permission>
+        description: Used by admins to give people permissions, example, "/perm add Glorial admin", do "/perm list" to see all perms.
+    house:
+        usage: /<command> switch <player> <house>
+        description: Used by admins to switch players houses.
+

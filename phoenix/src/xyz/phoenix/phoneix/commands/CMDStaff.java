@@ -28,7 +28,13 @@ public class CMDStaff implements CommandExecutor {
 
         if(args.length == 3) {
 
-            if(!(sender.isOp()) || !(Wizard.getWizardByPlayer((Player)sender).getPerms().contains("admin"))) {sender.sendMessage(ChatColor.GOLD + "[Phoneix] " + ChatColor.RED + "You don't have permission to use this command.");return true;}
+
+            if(sender instanceof Player) {
+
+                if(!(Wizard.getWizardByPlayer((Player)sender).getPerms().contains("admin"))) {sender.sendMessage(ChatColor.GOLD + "[Phoneix] " + ChatColor.RED + "You don't have permission to use this command.");return true;}
+            }
+
+
 
 
             if(args[0].equalsIgnoreCase("add")) {

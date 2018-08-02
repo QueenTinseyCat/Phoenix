@@ -13,9 +13,8 @@ public class EventJoin implements Listener {
     public void onJoinEvent(PlayerJoinEvent e) {
         Player player = e.getPlayer();
 
-        player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.GREEN +"Please keep in mind, that this is not the official server. " +
-                "This is just the public testing server. All of our updates get pushed here first for testing, then to the main server. As of right now, " +
-                "the official server is still in development, as well as many of our plugins. To get a better feeling for what is going on, join our discord, " +
+        player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.GREEN +"Please keep in mind, that this is not the finished server. " +
+                "We are still in very early development. To get a better feeling for what is going on, join our discord, " +
                 "discord.gg/QxDE4ES.");
 
         //Create Wizard class for player. This is the object we'll address all their stats when looking for.
