@@ -15,11 +15,13 @@ import xyz.phoenix.phoneix.commands.CommandBlocker;
 import xyz.phoenix.phoneix.commands.CMDGrant;
 import xyz.phoenix.phoneix.events.*;
 import xyz.phoenix.phoneix.items.wands.Items;
+import xyz.phoenix.phoneix.items.wands.WandMechanics;
 import xyz.phoenix.phoneix.player.Wizard;
 import xyz.phoenix.phoneix.regionChat.onChat;
+import xyz.phoenix.phoneix.spells.Lumos;
+import xyz.phoenix.phoneix.spells.Nox;
 
 import java.io.File;
-import java.io.IOException;
 
 public class Main extends JavaPlugin {
 
@@ -30,10 +32,11 @@ public class Main extends JavaPlugin {
     }
 
     private YamlConfiguration wizardsConfig;
-
+    private YamlConfiguration spellConfig;
 
     public void onEnable() {
         setup();
+
     }
 
     private void setup() {
@@ -42,6 +45,7 @@ public class Main extends JavaPlugin {
         setupCraftables();
         setupEventsAndCommands();
         generateWizardsYaml();
+        generateSpellsYaml();
         detectOnlineWizards();
     }
 
@@ -54,15 +58,17 @@ public class Main extends JavaPlugin {
         //Events
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new CommandBlocker(), this);
-        pm.registerEvents(new EventBlockPlace(), this);
+        pm.registerEvents(new BuildBlocking(), this);
         pm.registerEvents(new EventDropItemPlayer(), this);
         pm.registerEvents(new EventJoin(), this);
         pm.registerEvents(new EventKick(), this);
         pm.registerEvents(new EventPlayerInteract(), this);
-        pm.registerEvents(new EventWandMechanics(), this);
         pm.registerEvents(new EventQuit(), this);
         pm.registerEvents(new EventWeatherChange(), this);
         pm.registerEvents(new onChat(), this);
+        pm.registerEvents(new WandMechanics(), this);
+        pm.registerEvents(new Lumos(), this);
+        pm.registerEvents(new Nox(), this);
     }
     private void setupCraftables() {
         Bukkit.addRecipe(new ShapelessRecipe(new NamespacedKey(this, "wandCarver"),
@@ -107,13 +113,45 @@ public class Main extends JavaPlugin {
         }
         this.wizardsConfig = YamlConfiguration.loadConfiguration(file);
     }
+    private void generateSpellsYaml() {
 
+
+        File file = new File( getDataFolder(), "spells.yml");
+        if(!file.exists()) {
+
+            Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "[Phoenix] - Attempting to create spells.yml...");
+
+
+
+            try {
+                file.getParentFile().mkdirs();
+                file.createNewFile();
+                spellConfig.save(getDataFolder() + "/spells.yml");
+            }catch (Exception a) {
+                System.out.println("couldnt save file");
+            }
+            Bukkit.getConsoleSender().sendMessage(ChatColor.GREEN + "[Phoenix] - spells.yml created");
+
+
+        }
+        this.spellConfig = YamlConfiguration.loadConfiguration(file);
+    }
     public YamlConfiguration getWizardConfig() {
         return wizardsConfig;
     }
 
-
+    public YamlConfiguration getSpellConfig() {
+        return spellConfig;
+    }
     public void onDisable() {
 
+        for(Wizard wizard : Wizard.getWizards()) {
+            if(wizard.isWandRaised()) {
+                wizard.restoreInventory();
+            }
+
+            wizard.save();
+            wizard.saveSpells();
+        }
     }
 }

@@ -12,12 +12,8 @@ public class EventWeatherChange implements Listener {
     public void ClearWeather(WeatherChangeEvent event) {
 
         if(event.toWeatherState()) {
-            Bukkit.broadcastMessage("weather changed to clear");
             event.setCancelled(true);
+            event.getWorld().setTime(1000);
         }
-
-
-
-
     }
 }

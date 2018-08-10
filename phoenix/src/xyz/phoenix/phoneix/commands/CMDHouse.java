@@ -9,6 +9,9 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import xyz.phoenix.phoneix.player.Wizard;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CMDHouse implements CommandExecutor {
 
     public YamlConfiguration wizardConfig = new YamlConfiguration();
@@ -16,7 +19,12 @@ public class CMDHouse implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!(sender.isOp()) || !(Wizard.getWizardByPlayer((Player) sender).getPerms().contains("admin"))) {
+
+        if(!(sender instanceof Player)) {
+            sender.sendMessage(ChatColor.GOLD + "[Phoneix] " + ChatColor.RED + "You don't have permission to use this command.");
+            return true;
+        }
+        if (!(Wizard.getWizardByPlayer((Player) sender).getPerms().contains("admin"))) {
             sender.sendMessage(ChatColor.GOLD + "[Phoneix] " + ChatColor.RED + "You don't have permission to use this command.");
             return true;
         }
@@ -134,11 +142,43 @@ public class CMDHouse implements CommandExecutor {
 
 
             } else {
-                sender.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.RED + "Please use valid arguments.");
+                Player player = Bukkit.getPlayer(((Player) sender).getDisplayName());
+                List<String> playersInHouse = null;
+                for(Player p : Bukkit.getServer().getOnlinePlayers()) {
+
+
+                    if(Wizard.getWizardByPlayer(p).getType().equals(Wizard.getWizardByPlayer(player).getType())) {
+
+                        playersInHouse.add(p.getDisplayName());
+                    }
+
+
+                }
+
+
+                sender.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.WHITE + playersInHouse);
             }
 
 
             return true;
+        }
+        else {
+            Player player = Bukkit.getPlayer(((Player) sender).getDisplayName());
+            List<String> playersInHouse = new ArrayList<>();
+            for(Player p : Bukkit.getServer().getOnlinePlayers()) {
+
+
+                if(Wizard.getWizardByPlayer(p).getType().equals(Wizard.getWizardByPlayer(player).getType())) {
+
+                    playersInHouse.add(p.getDisplayName());
+                }
+
+
+            }
+
+            String SplayersInHouse = playersInHouse.toString();
+
+            sender.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.WHITE + "Players in house " + Wizard.getWizardByPlayer(player).getColoredStringType() + ChatColor.WHITE +":\n" +  SplayersInHouse.substring(1, SplayersInHouse.lastIndexOf(']')));
         }
 
 return true;

@@ -13,15 +13,14 @@ public class EventJoin implements Listener {
     public void onJoinEvent(PlayerJoinEvent e) {
         Player player = e.getPlayer();
 
-        player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.GREEN +"Please keep in mind, that this is not the finished server. " +
-                "We are still in very early development. To get a better feeling for what is going on, join our discord, " +
-                "discord.gg/QxDE4ES.");
-
+        player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.RED +"HEY SOOOO SOMEONE HACKED THE DISCORD, WE HAVE A NEW ONE, HOPEFULLY YOU CAN SEE THIS EVERYONE!!!");
+        player.sendMessage(ChatColor.RED + "Here is our new discord, https://discord.gg/rtQEtJq");
         //Create Wizard class for player. This is the object we'll address all their stats when looking for.
 
         //We'll assign the type from config
 
         Wizard wizard = new Wizard(player);
+
 
     }
 

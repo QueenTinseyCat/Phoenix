@@ -8,6 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
+import org.bukkit.inventory.ItemStack;
 import xyz.phoenix.phoneix.items.wands.Items;
 import xyz.phoenix.phoneix.player.Wizard;
 
@@ -369,7 +370,9 @@ public class CMDGrant implements CommandExecutor  {
 
                 }
                 if (args[0].equalsIgnoreCase("Wand")) {
-                    player.getInventory().addItem(Items.WAND.getItem());
+                    ItemStack item = Items.WAND.getItem();
+                    item.setDurability((short) 1);
+                    player.getInventory().addItem(item);
                     Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a Wand.");
                     return true;
 

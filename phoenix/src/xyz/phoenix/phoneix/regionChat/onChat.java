@@ -1,5 +1,8 @@
 package xyz.phoenix.phoneix.regionChat;
 
+import net.md_5.bungee.api.chat.ComponentBuilder;
+import net.md_5.bungee.api.chat.HoverEvent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
@@ -18,12 +21,23 @@ public class onChat implements Listener {
     public void onPlayerChat(AsyncPlayerChatEvent event) {
         event.setCancelled(true);
         Player player = event.getPlayer();
+        Wizard wizard = Wizard.getWizardByPlayer(player);
 
         //global
         if (event.getMessage().startsWith("%")) {
 
             String realMessage = event.getMessage().toLowerCase().replaceFirst("%", "");
-            Bukkit.getServer().broadcastMessage(ChatColor.DARK_AQUA + "[Global] " + ChatColor.WHITE + "<" + player.getDisplayName() + "> " + realMessage);
+            TextComponent message = new TextComponent(ChatColor.DARK_AQUA + "[Global] " + ChatColor.WHITE + "<" + player.getDisplayName() + "> "+ realMessage);
+            String perm = Wizard.getWizardByPlayer(player).getPerms().contains("staff") ? "Staff" : "";
+            message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(wizard.getTypeColor() + "Year " + wizard.getYear() + "\n" + perm).create()));
+
+           for(Player p : Bukkit.getServer().getOnlinePlayers()) {
+
+               p.spigot().sendMessage(message);
+
+           }
+
+            Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_AQUA + "[Global] " + ChatColor.WHITE + "<" + player.getDisplayName() + "> " + realMessage);
             return;
         }
         //end global
@@ -35,15 +49,21 @@ public class onChat implements Listener {
 
                 Bukkit.getConsoleSender().sendMessage(ChatColor.LIGHT_PURPLE + "[Admin] " + ChatColor.WHITE + "<" + event.getPlayer().getDisplayName() + "> " + event.getMessage().replaceFirst("\\$", ""));
 
-                for (Player p : Bukkit.getServer().getOnlinePlayers()) {
 
-                    if (Wizard.getWizardByPlayer(p).getPerms().contains("admin")) {
 
-                        p.sendMessage(ChatColor.LIGHT_PURPLE + "[Admin] " + ChatColor.WHITE + "<" + event.getPlayer().getDisplayName() + "> " + event.getMessage().replaceFirst("\\$", ""));
-                       }
+                String realMessage = event.getMessage().toLowerCase().replaceFirst("\\$", "");
+                TextComponent message = new TextComponent(ChatColor.LIGHT_PURPLE + "[Admin] " + ChatColor.WHITE + "<" + player.getDisplayName() + "> "+ realMessage);
+                String perm = Wizard.getWizardByPlayer(player).getPerms().contains("staff") ? "Staff" : "";
+                message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(wizard.getTypeColor() + "Year " + wizard.getYear() + "\n" + perm).create()));
 
+                for(Player p : Bukkit.getServer().getOnlinePlayers()) {
+                    if(Wizard.getWizardByPlayer(p).getPerms().contains("admin")) {
+                        p.spigot().sendMessage(message);
+                    }
 
                 }
+
+
                 return;
 
 
@@ -53,49 +73,45 @@ public class onChat implements Listener {
         if(event.getMessage().startsWith("&")) {
 
 
-            if (Wizard.getWizardByPlayer(player).getPerms().contains("staff")) {
+            if (wizard.getPerms().contains("staff")) {
                 Bukkit.getConsoleSender().sendMessage(ChatColor.RED + "[Staff] " + ChatColor.WHITE + "<" + event.getPlayer().getDisplayName() + "> " + event.getMessage().replaceFirst("&", ""));
-                for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                String realMessage = event.getMessage().toLowerCase().replaceFirst("&", "");
+                TextComponent message = new TextComponent(ChatColor.RED + "[Staff] " + ChatColor.WHITE + "<" + player.getDisplayName() + "> "+ realMessage);
+                String perm = Wizard.getWizardByPlayer(player).getPerms().contains("staff") ? "Staff" : "";
+                message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(wizard.getTypeColor() + "Year " + wizard.getYear() + "\n" + perm).create()));
 
-                    if (Wizard.getWizardByPlayer(p).getPerms().contains("staff")) {
-
-                        p.sendMessage(ChatColor.RED + "[Staff] " + ChatColor.WHITE + "<" + event.getPlayer().getDisplayName() + "> " + event.getMessage().replaceFirst("&", ""));
-
+                for(Player p : Bukkit.getServer().getOnlinePlayers()) {
+                    if(Wizard.getWizardByPlayer(p).getPerms().contains("staff")) {
+                        p.spigot().sendMessage(message);
                     }
 
-
                 }
-                return;
 
+                return;
 
             }
 
-
-
-
-
-
-
-
         }
-
-
 
 
         //whisper
         if (event.getMessage().startsWith("~")) {
 
-            String realMessage = event.getMessage().replaceFirst("~", "");
+            String realMessage = event.getMessage().toLowerCase().replaceFirst("~", "");
+        TextComponent message = new TextComponent(ChatColor.DARK_GRAY + "[Whisper] " + ChatColor.GRAY + "<" + player.getDisplayName() + "> "+ realMessage);
+            String perm = Wizard.getWizardByPlayer(player).getPerms().contains("staff") ? "Staff" : "";
+            message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(wizard.getTypeColor() + "Year " + wizard.getYear() + "\n" + perm).create()));
+
             for (Entity entity : player.getNearbyEntities(4, 4, 4)) {
 
                 if (entity instanceof Player) {
 
-                    entity.sendMessage(ChatColor.DARK_GRAY + "[Whisper] " + ChatColor.GRAY + "<" + player.getDisplayName() + "> " + ChatColor.ITALIC + realMessage);
+                    entity.spigot().sendMessage(message);
 
                 }
 
             }
-            player.sendMessage(ChatColor.DARK_GRAY + "[Whisper] " + ChatColor.GRAY + "<" + player.getDisplayName() + "> " + ChatColor.ITALIC + realMessage);
+            player.spigot().sendMessage(message);
             Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GRAY + "[Whisper] " + ChatColor.GRAY + "<" + player.getDisplayName() + "> " + ChatColor.ITALIC + realMessage);
 
             return;
@@ -107,32 +123,35 @@ public class onChat implements Listener {
 
 
             if (Wizard.getWizardByPlayer(player).getType().equals(Wizard.Type.HORNED_SERPENT)) {
-                Bukkit.getConsoleSender().sendMessage(ChatColor.BLUE + "[Horned Serpent] " + ChatColor.WHITE + "<" + event.getPlayer().getDisplayName() + "> " + event.getMessage().replaceFirst("#", ""));
-                for (Player p : Bukkit.getServer().getOnlinePlayers()) {
 
-                    if (Wizard.getWizardByPlayer(p).getType().equals(Wizard.Type.HORNED_SERPENT)) {
+                String realMessage = event.getMessage().toLowerCase().replaceFirst("#", "");
+                TextComponent message = new TextComponent(ChatColor.BLUE + "[Horned Serpent] " + ChatColor.WHITE + "<" + player.getDisplayName() + "> "+ realMessage);
+                String perm = Wizard.getWizardByPlayer(player).getPerms().contains("staff") ? "Staff" : "";
+                message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(wizard.getTypeColor() + "Year " + wizard.getYear() + "\n" + perm).create()));
 
-                        p.sendMessage(ChatColor.BLUE + "[Horned Serpent] " + ChatColor.WHITE + "<" + event.getPlayer().getDisplayName() + "> " + event.getMessage().replaceFirst("#", ""));
-
+                for(Player p : Bukkit.getServer().getOnlinePlayers()) {
+                    if(Wizard.getWizardByPlayer(p).getType().equals(Wizard.Type.HORNED_SERPENT)) {
+                        p.spigot().sendMessage(message);
                     }
-
-
                 }
+
+                Bukkit.getConsoleSender().sendMessage(ChatColor.BLUE + "[Horned Serpent] " + ChatColor.WHITE + "<" + event.getPlayer().getDisplayName() + "> " + event.getMessage().replaceFirst("#", ""));
+
                 return;
 
 
             }
             if (Wizard.getWizardByPlayer(player).getType().equals(Wizard.Type.THUNDERBIRD)) {
                 Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_PURPLE + "[Thunderbird] " + ChatColor.WHITE + "<" + event.getPlayer().getDisplayName() + "> " + event.getMessage().replaceFirst("#", ""));
-                for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                String realMessage = event.getMessage().toLowerCase().replaceFirst("#", "");
+                TextComponent message = new TextComponent(ChatColor.DARK_PURPLE + "[Thunderbird] " + ChatColor.WHITE + "<" + player.getDisplayName() + "> "+ realMessage);
+                String perm = Wizard.getWizardByPlayer(player).getPerms().contains("staff") ? "Staff" : "";
+                message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(wizard.getTypeColor() + "Year " + wizard.getYear() + "\n" + perm).create()));
 
-                    if (Wizard.getWizardByPlayer(p).getType().equals(Wizard.Type.THUNDERBIRD)) {
-
-                        p.sendMessage(ChatColor.DARK_PURPLE + "[Thunderbird] " + ChatColor.WHITE + "<" + event.getPlayer().getDisplayName() + "> " + event.getMessage().replaceFirst("#", ""));
-
+                for(Player p : Bukkit.getServer().getOnlinePlayers()) {
+                    if(Wizard.getWizardByPlayer(p).getType().equals(Wizard.Type.THUNDERBIRD)) {
+                        p.spigot().sendMessage(message);
                     }
-
-
                 }
                 return;
 
@@ -141,15 +160,15 @@ public class onChat implements Listener {
 
             if (Wizard.getWizardByPlayer(player).getType().equals(Wizard.Type.WAMPUS)) {
                 Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_GREEN + "[Wampus] " + ChatColor.WHITE + "<" + event.getPlayer().getDisplayName() + "> " + event.getMessage().replaceFirst("#", ""));
-                for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                String realMessage = event.getMessage().toLowerCase().replaceFirst("#", "");
+                TextComponent message = new TextComponent(ChatColor.DARK_GREEN + "[Wampus] " + ChatColor.WHITE + "<" + player.getDisplayName() + "> "+ realMessage);
+                String perm = Wizard.getWizardByPlayer(player).getPerms().contains("staff") ? "Staff" : "";
+                message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(wizard.getTypeColor() + "Year " + wizard.getYear() + "\n" + perm).create()));
 
-                    if (Wizard.getWizardByPlayer(p).getType().equals(Wizard.Type.WAMPUS)) {
-
-                        p.sendMessage(ChatColor.DARK_GREEN + "[Wampus] " + ChatColor.WHITE + "<" + event.getPlayer().getDisplayName() + "> " + event.getMessage().replaceFirst("#", ""));
-
+                for(Player p : Bukkit.getServer().getOnlinePlayers()) {
+                    if(Wizard.getWizardByPlayer(p).getType().equals(Wizard.Type.WAMPUS)) {
+                        p.spigot().sendMessage(message);
                     }
-
-
                 }
                 return;
 
@@ -157,15 +176,15 @@ public class onChat implements Listener {
             }
             if (Wizard.getWizardByPlayer(player).getType().equals(Wizard.Type.PUKWUDGIE)) {
                 Bukkit.getConsoleSender().sendMessage(ChatColor.DARK_RED + "[Pukwudgie] " + ChatColor.WHITE + "<" + event.getPlayer().getDisplayName() + "> " + event.getMessage().replaceFirst("#", ""));
-                for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                String realMessage = event.getMessage().toLowerCase().replaceFirst("#", "");
+                TextComponent message = new TextComponent(ChatColor.DARK_RED + "[Pukwudgie] " + ChatColor.WHITE + "<" + player.getDisplayName() + "> "+ realMessage);
+                String perm = Wizard.getWizardByPlayer(player).getPerms().contains("staff") ? "Staff" : "";
+                message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(wizard.getTypeColor() + "Year " + wizard.getYear() + "\n" + perm).create()));
 
-                    if (Wizard.getWizardByPlayer(p).getType().equals(Wizard.Type.PUKWUDGIE)) {
-
-                        p.sendMessage(ChatColor.DARK_RED + "[Pukwudgie] " + ChatColor.WHITE + "<" + event.getPlayer().getDisplayName() + "> " + event.getMessage().replaceFirst("#", ""));
-
+                for(Player p : Bukkit.getServer().getOnlinePlayers()) {
+                    if(Wizard.getWizardByPlayer(p).getType().equals(Wizard.Type.PUKWUDGIE)) {
+                        p.spigot().sendMessage(message);
                     }
-
-
                 }
                 return;
 
@@ -173,15 +192,15 @@ public class onChat implements Listener {
             }
             if (Wizard.getWizardByPlayer(player).getType().equals(Wizard.Type.UNSORTED)) {
                 Bukkit.getConsoleSender().sendMessage(ChatColor.BLACK + "[Unsorted] " + ChatColor.WHITE + "<" + event.getPlayer().getDisplayName() + "> " + event.getMessage().replaceFirst("#", ""));
-                for (Player p : Bukkit.getServer().getOnlinePlayers()) {
+                String realMessage = event.getMessage().toLowerCase().replaceFirst("#", "");
+                TextComponent message = new TextComponent(ChatColor.BLACK + "[Unsorted] " + ChatColor.WHITE + "<" + player.getDisplayName() + "> "+ realMessage);
+                String perm = Wizard.getWizardByPlayer(player).getPerms().contains("staff") ? "Staff" : "";
+                message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(wizard.getTypeColor() + "Year " + wizard.getYear() + "\n" + perm).create()));
 
-                    if (Wizard.getWizardByPlayer(p).getPerms().contains("staff")) {
-
-                        p.sendMessage(ChatColor.BLACK + "[Unsorted] " + ChatColor.WHITE + "<" + event.getPlayer().getDisplayName() + "> " + event.getMessage().replaceFirst("#", ""));
-
+                for(Player p : Bukkit.getServer().getOnlinePlayers()) {
+                    if(Wizard.getWizardByPlayer(p).getType().equals(Wizard.Type.UNSORTED) || Wizard.getWizardByPlayer(p).getPerms().contains("staff")) {
+                        p.spigot().sendMessage(message);
                     }
-
-
                 }
                 return;
 
@@ -197,17 +216,22 @@ public class onChat implements Listener {
 
         //region chat
         else {
+            String realMessage = event.getMessage().toLowerCase().replaceFirst("#", "");
+            TextComponent message = new TextComponent(ChatColor.GRAY + "[Region] " + ChatColor.WHITE + "<" + player.getDisplayName() + "> "+ realMessage);
+            String perm = Wizard.getWizardByPlayer(player).getPerms().contains("staff") ? "Staff" : "";
+            message.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new ComponentBuilder(wizard.getTypeColor() + "Year " + wizard.getYear() + "\n" + perm).create()));
+
             for (Entity entity : player.getNearbyEntities(50, 50, 50)) {
 
 
                 if (entity instanceof Player) {
                     if (!((Player) entity).getDisplayName().equals(player.getDisplayName())) {
-                        entity.sendMessage(ChatColor.GRAY + "[Region] " + ChatColor.WHITE + "<" + player.getDisplayName() + "> " + event.getMessage());
+                        entity.spigot().sendMessage(message);
 
                     }
                 }
             }
-            player.sendMessage(ChatColor.GRAY + "[Region] " + ChatColor.WHITE + "<" + player.getDisplayName() + "> " + event.getMessage());
+            player.spigot().sendMessage(message);
             Bukkit.getConsoleSender().sendMessage(ChatColor.GRAY + "[Region] " + ChatColor.WHITE + "<" + player.getDisplayName() + "> " + event.getMessage());
 
 

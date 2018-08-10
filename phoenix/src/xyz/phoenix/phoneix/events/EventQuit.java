@@ -10,11 +10,10 @@ public class EventQuit implements Listener {
     @EventHandler
     public void onQuit(PlayerQuitEvent e) {
         Wizard wizard = Wizard.getWizardByPlayer(e.getPlayer());
-        if(wizard == null) {
-            // shrug
-            return;
-        }
+        if(wizard == null) {return;}
+        wizard.setWandRaised(false);
+        wizard.restoreInventory();
         wizard.save();
+        wizard.saveSpells();
     }
-
 }
