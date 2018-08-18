@@ -17,6 +17,7 @@ public class Nox implements Listener {
         if(event.getMessage().equalsIgnoreCase("nox")) {
             if (!Wizard.getWizardByPlayer(event.getPlayer()).isWandRaised()) {return;}
             Wizard.getWizardByPlayer(event.getPlayer()).setSpokenSpell(Spell.NOX);
+
         }
     }
 
@@ -24,9 +25,7 @@ public class Nox implements Listener {
         Player player = wizard.getPlayer();
         if(!wizard.getSpellID().equals("011")) {return;}
         double lvl = wizard.getLevel();
-        wizard.getPlayer().sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.LIGHT_PURPLE + "" + ChatColor.ITALIC + "Nox");
-        wizard.restoreInventory();
-        wizard.setWandRaised(false);
+        wizard.getPlayer().sendMessage(ChatColor.LIGHT_PURPLE + "[Wand] " + ChatColor.GRAY + "" + ChatColor.ITALIC + "11 " + ChatColor.DARK_AQUA + ChatColor.ITALIC + "Nox");
         int timesCast = wizard.getSpells().get(Spell.NOX);
         player.getWorld().playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_THROW, 100, 50000);
         player.removePotionEffect(PotionEffectType.NIGHT_VISION);
@@ -59,9 +58,7 @@ public class Nox implements Listener {
         Player player = wizard.getPlayer();
         if(!wizard.getSpellID().equals("011")) {return;}
         double lvl = wizard.getLevel();
-        wizard.getPlayer().sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.LIGHT_PURPLE + "" + ChatColor.ITALIC + "Nox");
-        wizard.restoreInventory();
-        wizard.setWandRaised(false);
+        wizard.getPlayer().sendMessage(ChatColor.LIGHT_PURPLE + "[Wand] " + ChatColor.GRAY + "" + ChatColor.ITALIC + "11 " + ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "Nox");
         int timesCast = wizard.getSpells().get(Spell.NOX);
         player.getWorld().playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_THROW, 100, 50000);
         player.removePotionEffect(PotionEffectType.NIGHT_VISION);

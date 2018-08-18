@@ -2,6 +2,7 @@ name: Phoenix
 version: 1.0
 main: xyz.phoenix.phoneix.Main
 author: Glorial
+loadbefore: [WorldEdit]
 commands:
     grant:
         usage: /<command> <item>
@@ -13,3 +14,10 @@ commands:
         usage: /<command> switch <player> <house>
         description: Used by admins to switch players houses.
 
+    info:
+        usage: /<command> <player> [-a]
+        description: Used to find the info of a player. The all argument means that it will show you more data.
+        aliases: [info]
+    casts:
+        usage: /<command> <player> <spell>
+        description: Sees how many times you have casted spells.

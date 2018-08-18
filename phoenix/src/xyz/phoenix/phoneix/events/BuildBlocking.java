@@ -15,7 +15,7 @@ public class BuildBlocking implements Listener {
     public void blockPlacing(BlockPlaceEvent event) {
         Block block = event.getBlock();
         if (event.getPlayer().getGameMode() == GameMode.CREATIVE) return;
-        if (block.getType() == Material.STAINED_GLASS_PANE) return;
+
 
 
         event.setCancelled(true);

@@ -9,10 +9,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ShapelessRecipe;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import xyz.phoenix.phoneix.commands.CMDHouse;
-import xyz.phoenix.phoneix.commands.CMDStaff;
-import xyz.phoenix.phoneix.commands.CommandBlocker;
-import xyz.phoenix.phoneix.commands.CMDGrant;
+import xyz.phoenix.phoneix.commands.*;
 import xyz.phoenix.phoneix.events.*;
 import xyz.phoenix.phoneix.items.wands.Items;
 import xyz.phoenix.phoneix.items.wands.WandMechanics;
@@ -20,6 +17,7 @@ import xyz.phoenix.phoneix.player.Wizard;
 import xyz.phoenix.phoneix.regionChat.onChat;
 import xyz.phoenix.phoneix.spells.Lumos;
 import xyz.phoenix.phoneix.spells.Nox;
+import xyz.phoenix.phoneix.spells.Periculum;
 
 import java.io.File;
 
@@ -55,6 +53,8 @@ public class Main extends JavaPlugin {
         getCommand("grant").setExecutor(new CMDGrant());
         getCommand("perm").setExecutor(new CMDStaff());
         getCommand("house").setExecutor(new CMDHouse());
+        getCommand("info").setExecutor(new CMDInfo());
+        getCommand("casts").setExecutor(new CMDcasts());
         //Events
         PluginManager pm = Bukkit.getPluginManager();
         pm.registerEvents(new CommandBlocker(), this);
@@ -69,6 +69,7 @@ public class Main extends JavaPlugin {
         pm.registerEvents(new WandMechanics(), this);
         pm.registerEvents(new Lumos(), this);
         pm.registerEvents(new Nox(), this);
+        pm.registerEvents(new Periculum(), this);
     }
     private void setupCraftables() {
         Bukkit.addRecipe(new ShapelessRecipe(new NamespacedKey(this, "wandCarver"),
@@ -148,6 +149,8 @@ public class Main extends JavaPlugin {
         for(Wizard wizard : Wizard.getWizards()) {
             if(wizard.isWandRaised()) {
                 wizard.restoreInventory();
+                wizard.setWandRaised(false);
+                wizard.removeBar();
             }
 
             wizard.save();

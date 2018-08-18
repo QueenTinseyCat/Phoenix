@@ -26,9 +26,7 @@ public class Lumos implements Listener {
         Player player = wizard.getPlayer();
         if(!wizard.getSpellID().equals("01")) {return;}
         double lvl = wizard.getLevel();
-        wizard.getPlayer().sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.LIGHT_PURPLE + "" + ChatColor.ITALIC + "Lumos");
-        wizard.restoreInventory();
-        wizard.setWandRaised(false);
+        wizard.getPlayer().sendMessage(ChatColor.LIGHT_PURPLE + "[Wand] " + ChatColor.GRAY + "" + ChatColor.ITALIC + "1 " + ChatColor.DARK_AQUA + ChatColor.ITALIC + "Lumos");
         int timesCast = wizard.getSpells().get(Spell.LUMOS);
         int dur = (int)lvl +timesCast * 80 + 1;
         player.getWorld().playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_THROW, 100, 50000);
@@ -64,9 +62,7 @@ public class Lumos implements Listener {
         Player player = wizard.getPlayer();
         if(!wizard.getSpellID().equals("01")) {return;}
         double lvl = wizard.getLevel();
-        wizard.getPlayer().sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.LIGHT_PURPLE + "" + ChatColor.ITALIC + "Lumos");
-        wizard.restoreInventory();
-        wizard.setWandRaised(false);
+        wizard.getPlayer().sendMessage(ChatColor.LIGHT_PURPLE + "[Wand] " +ChatColor.GRAY + "1 "+ ChatColor.DARK_AQUA + "" + ChatColor.ITALIC + "Lumos");
         int timesCast = wizard.getSpells().get(Spell.LUMOS);
         int dur = (int)lvl +timesCast * 40 + 1;
         player.getWorld().playSound(player.getLocation(), Sound.ENTITY_SPLASH_POTION_THROW, 100, 50000);

@@ -3,6 +3,7 @@ package xyz.phoenix.phoneix.items.wands;
 import xyz.phoenix.phoneix.player.Wizard;
 import xyz.phoenix.phoneix.spells.Lumos;
 import xyz.phoenix.phoneix.spells.Nox;
+import xyz.phoenix.phoneix.spells.Periculum;
 import xyz.phoenix.phoneix.spells.Spell;
 
 public class NVSpellCasting {
@@ -21,4 +22,10 @@ public class NVSpellCasting {
         }
     }
 
+    public void Periculum(Wizard wizard) {
+
+        if(wizard.getSpells().get(Spell.PERICULUM) > 100) {
+            new Periculum().castNV(wizard);
+        }
+    }
 }

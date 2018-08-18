@@ -1,8 +1,10 @@
 package xyz.phoenix.phoneix.items.wands;
 
+import me.confuser.barapi.BarAPI;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.boss.BossBar;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,33 +17,38 @@ import org.bukkit.inventory.meta.ItemMeta;
 import xyz.phoenix.phoneix.player.Wizard;
 import xyz.phoenix.phoneix.spells.Lumos;
 import xyz.phoenix.phoneix.spells.Nox;
+import xyz.phoenix.phoneix.spells.Periculum;
 import xyz.phoenix.phoneix.spells.Spell;
 
 public class WandMechanics implements Listener {
 
-    public void cast(Spell spell, Wizard wizard) {
+
+   public void cast(Spell spell, Wizard wizard) {
+        BarAPI.removeBar(wizard.getPlayer());
+        wizard.setWandRaised(false);
+        wizard.restoreInventory();
         switch (spell) {
-            case LUMOS: new NVSpellCasting().Lumos(wizard);
-            case NOX: new NVSpellCasting().Nox(wizard);
+            case LUMOS: new Lumos().cast(wizard);
+            case NOX: new Nox().cast(wizard);
+            case PERICULUM: new Periculum().cast(wizard);
             default: return;
         }
     }
-
     public void castNV(Wizard wizard) {
+        BarAPI.removeBar(wizard.getPlayer());
+        wizard.setWandRaised(false);
+        wizard.restoreInventory();
         String spellID = wizard.getSpellID();
 
         switch (spellID) {
 
-            case "01" : new Lumos().castNV(wizard);
-            case "011" : new Nox().castNV(wizard);
-
+            case "01" : new NVSpellCasting().Lumos(wizard);
+            case "011" : new NVSpellCasting().Nox(wizard);
+            case "021" : new NVSpellCasting().Periculum(wizard);
 
 
 
         }
-
-
-
     }
 
     @EventHandler
@@ -66,9 +73,8 @@ public class WandMechanics implements Listener {
         }
         if(!wizard.isWandRaised()) {return;}
         if(wizard.getSpokenSpell().equals(Spell.NONE)) {
-
             if(!wizard.getSpellID().equals("0")) {
-                player.sendMessage(wizard.getTypeColor() + wizard.getSpellID());
+
                 castNV(wizard);
             }
 
@@ -79,9 +85,11 @@ public class WandMechanics implements Listener {
     @EventHandler
     public void onWandStateEvent(PlayerInteractEvent event) {
         Action action = event.getAction();
+        //makes sure player right clicked
         if (action != Action.RIGHT_CLICK_AIR && action != Action.RIGHT_CLICK_BLOCK) return;
         Player player = event.getPlayer();
         PlayerInventory inv = player.getInventory();
+        //bunch of checks to make sure your holding a wand
         if (event.getHand() == null) return;
         if (event.getHand() != EquipmentSlot.HAND) return;
         ItemStack item = inv.getItemInMainHand();
@@ -98,7 +106,7 @@ public class WandMechanics implements Listener {
         if (item.getType() == Material.STAINED_GLASS_PANE) {
             if (wizard.isWandRaised()) {
                 if (player.isSneaking()) {
-                    player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.GRAY + "" + ChatColor.ITALIC + "lowered wand");
+                    player.sendMessage(ChatColor.LIGHT_PURPLE + "[Wand] " + ChatColor.GRAY + "" + ChatColor.ITALIC + "lowered wand");
                     event.setCancelled(true);
                     wizard.restoreInventory();
                     wizard.setWandRaised(false);
@@ -108,15 +116,23 @@ public class WandMechanics implements Listener {
         }
         if (!meta.getDisplayName().equals(ChatColor.LIGHT_PURPLE + "Wand")) return;
         if (!wizard.isWandRaised()) {
-            player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.GRAY + "" + ChatColor.ITALIC + "raised wand");
+            player.sendMessage(ChatColor.LIGHT_PURPLE + "[Wand] " + ChatColor.GRAY + "" + ChatColor.ITALIC + "raised wand");
             wizard.loadPanes();
             wizard.setWandRaised(true);
+            BarAPI.setMessage(player, "", 0F);
+
+
+
+
+
+
             return;
         }
-            player.sendMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.GRAY + "" + ChatColor.ITALIC + "lowered wand");
+            player.sendMessage(ChatColor.LIGHT_PURPLE + "[Wand] " + ChatColor.GRAY + "" + ChatColor.ITALIC + "lowered wand");
             event.setCancelled(true);
             wizard.restoreInventory();
             wizard.setWandRaised(false);
+            BarAPI.removeBar(player);
     }
 
 
@@ -142,38 +158,48 @@ public class WandMechanics implements Listener {
     }
     if(!item.getType().equals(Material.STAINED_GLASS_PANE)) {return;}
     String slot = meta.getDisplayName();
-        if(slot.contains("1")) {
+    if(wizard.getSpellID().length() >= 11) {return;}
+        if(slot.equals(ChatColor.GOLD + "1")) {
             wizard.appendToSpellID("1");
+            BarAPI.setMessage(player, wizard.getSpellID().substring(1), (float)(wizard.getSpellID().length() - 1) * 10);
             return;
         }
-        if(slot.contains("2")) {
+        if(slot.equals(ChatColor.GOLD + "2")) {
             wizard.appendToSpellID("2");
+            BarAPI.setMessage(player, wizard.getSpellID().substring(1), (float)(wizard.getSpellID().length() - 1) * 10);
             return;
         }
-        if(slot.contains("3")) {
+        if(slot.equals(ChatColor.GOLD + "3")) {
             wizard.appendToSpellID("3");
+            BarAPI.setMessage(player, wizard.getSpellID().substring(1), (float)(wizard.getSpellID().length() - 1) * 10);
             return;
         }
-        if(slot.contains("4")) {
+        if(slot.equals(ChatColor.GOLD + "4")) {
             wizard.appendToSpellID("4");
+            BarAPI.setMessage(player, wizard.getSpellID().substring(1), (float)(wizard.getSpellID().length() - 1) * 10);
             return;
         }
-        if(slot.contains("5")) {
+        if(slot.equals(ChatColor.GOLD + "5")) {
             wizard.appendToSpellID("5");
+            BarAPI.setMessage(player, wizard.getSpellID().substring(1), (float)(wizard.getSpellID().length() - 1) * 10);
             return;
         }
-        if(slot.contains("6")) {
+        if(slot.equals(ChatColor.GOLD + "6")) {
             wizard.appendToSpellID("6");
+            BarAPI.setMessage(player, wizard.getSpellID().substring(1), (float)(wizard.getSpellID().length() - 1) * 10);
             return;
         }
-        if(slot.contains("7")) {
+        if(slot.equals(ChatColor.GOLD + "7")) {
             wizard.appendToSpellID("7");
+            BarAPI.setMessage(player, wizard.getSpellID().substring(1), (float)(wizard.getSpellID().length() - 1) * 10);
             return;
         }
-        if(slot.contains("8")) {
+        if(slot.equals(ChatColor.GOLD + "8")) {
             wizard.appendToSpellID("8");
+            BarAPI.setMessage(player, wizard.getSpellID().substring(1), (float)(wizard.getSpellID().length() - 1) * 10);
             return;
         }
+
 
 
     }

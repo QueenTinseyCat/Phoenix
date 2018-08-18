@@ -1,7 +1,9 @@
 package xyz.phoenix.phoneix.player;
 
+import me.confuser.barapi.BarAPI;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Material;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -37,7 +39,6 @@ public class Wizard {
     private List<String> permissions;
     private double level;
     private String spellID;
-
     private boolean wandRaised = false;
 
 
@@ -48,25 +49,19 @@ public class Wizard {
         UUID uuid = player.getUniqueId();
         //Loading info from config into memory
         this.year = yaml.isSet(uuid + ".year") ? yaml.getInt(uuid + ".year") : 0;
-
-        this.name = yaml.getString(uuid + ".name");
+        this.name = yaml.isSet(uuid + ".name") ? yaml.getString(uuid + ".name") : player.getDisplayName();
+        if(!(player.getDisplayName() == name)) { this.name = player.getDisplayName();}
         this.permissions = yaml.getStringList(uuid + ".permissions");
         this.type = yaml.isSet(uuid + ".type") ? Type.valueOf(yaml.getString(uuid + ".type")) : Type.UNSORTED;
-
         this.level = yaml.isSet(uuid  + ".level") ? yaml.getDouble(uuid + ".level") : 0;
-        if(permissions == null) {
-            permissions.add("wizard");
-        }
+        if(permissions == null) {permissions.add("wizard");}
         spellID = "0";
         loadSpells();
         wizards.add(this);
-
         save();
     }
 
-
     public void loadPanes() {
-
 
         PlayerInventory inv = player.getInventory();
 
@@ -91,6 +86,28 @@ public class Wizard {
         resetSpellID();
 
 
+    }
+    public void setYear(int year) {
+        this.year = year;
+    }
+    public double getHealth() {
+        return player.getHealth();
+    }
+    public String getGamemode() {
+
+        if(player.getGameMode().equals(GameMode.CREATIVE)) {
+            return "Creative";
+        }
+        if(player.getGameMode().equals(GameMode.SURVIVAL)) {
+            return "Survival";
+        }
+        if(player.getGameMode().equals(GameMode.ADVENTURE)) {
+            return "Adventure";
+        }
+        if(player.getGameMode().equals(GameMode.SPECTATOR)) {
+            return "Spectator";
+        }
+        return "Unknown";
     }
     public void addPerm(String Perm) {
         permissions.add(Perm);
@@ -164,6 +181,8 @@ public class Wizard {
         UUID uuid = player.getUniqueId();
 
         Main.INSTANCE.getSpellConfig().set(uuid + ".spells.lumos", spells.get(Spell.LUMOS));
+        Main.INSTANCE.getSpellConfig().set(uuid + ".spells.nox", spells.get(Spell.NOX));
+        Main.INSTANCE.getSpellConfig().set(uuid + ".spells.periculum", spells.get(Spell.PERICULUM));
         try {
             Main.INSTANCE.getSpellConfig().save(Main.INSTANCE.getDataFolder().getPath() + "/spells.yml");
         }catch (IOException ex) {
@@ -171,6 +190,17 @@ public class Wizard {
         }
 
 
+    }
+    public void sendMessage(String message, boolean pre) {
+        if(pre) {
+            player.sendMessage(ChatColor.GOLD + "[Phoenix] " + message);
+            return;
+        }
+        player.sendMessage(message);
+
+    }
+    public void removeBar() {
+        BarAPI.removeBar(player);
     }
     public void resetSpellID() {
         spellID = "0";
@@ -180,7 +210,6 @@ public class Wizard {
     }
     public void appendToSpellID(String newID) {
         spellID+=newID;
-        player.sendMessage(spellID.substring(1));
     }
     public HashMap<Spell, Integer> getSpells() {
         return spells;
@@ -281,16 +310,14 @@ public class Wizard {
         YamlConfiguration spellConfig = Main.getInstance().getSpellConfig();
         try {
             spellConfig.load(new File(Main.INSTANCE.getDataFolder(), "spells.yml"));
-        }catch (IOException | InvalidConfigurationException ex) {
-
-        }
-
-
+        }catch (IOException | InvalidConfigurationException ex) {}
         int lumos = spellConfig.isSet(uuid + ".spells.lumos") ? spellConfig.getInt(uuid+".spells.lumos") : 0;
         spells.put(Spell.LUMOS, lumos);
         int nox = spellConfig.isSet(uuid + ".spells.nox") ? spellConfig.getInt(uuid+".spells.nox") : 0;
         spells.put(Spell.NOX, nox);
-
+        int periculum = spellConfig.isSet(uuid + ".spells.periculum") ? spellConfig.getInt(uuid+".spells.periculum") : 0;
+        spells.put(Spell.PERICULUM, periculum);
+        saveSpells();
 
 
     }

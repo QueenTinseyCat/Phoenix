@@ -20,14 +20,14 @@ public class CMDHouse implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
-        if(!(sender instanceof Player)) {
-            sender.sendMessage(ChatColor.GOLD + "[Phoneix] " + ChatColor.RED + "You don't have permission to use this command.");
+        if(sender instanceof Player) {
+            if (!(Wizard.getWizardByPlayer((Player) sender).getPerms().contains("admin"))) {
+                sender.sendMessage(ChatColor.GOLD + "[Phoneix] " + ChatColor.RED + "You don't have permission to use this command.");
+                return true;
+            }
             return true;
         }
-        if (!(Wizard.getWizardByPlayer((Player) sender).getPerms().contains("admin"))) {
-            sender.sendMessage(ChatColor.GOLD + "[Phoneix] " + ChatColor.RED + "You don't have permission to use this command.");
-            return true;
-        }
+
 
         if (args.length == 3) {
 
