@@ -21,3 +21,10 @@ commands:
     casts:
         usage: /<command> <player> <spell>
         description: Sees how many times you have casted spells.
+    id:
+        usage: /<command>
+        description: Gives the player their id card.
+    inv:
+        usage: /<command> <player>
+        description: Used by staff to view players inventory.
+        aliases: [inventory]

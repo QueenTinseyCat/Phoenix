@@ -25,7 +25,7 @@ public class CMDHouse implements CommandExecutor {
                 sender.sendMessage(ChatColor.GOLD + "[Phoneix] " + ChatColor.RED + "You don't have permission to use this command.");
                 return true;
             }
-            return true;
+
         }
 
 

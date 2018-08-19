@@ -4,6 +4,7 @@ import me.confuser.barapi.BarAPI;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -29,6 +30,8 @@ public class Wizard {
         main = Main.getInstance();
         yaml = main.getWizardConfig();
     }
+    private boolean listenForPrice = false;
+    private ItemStack itemForPrice;
     private HashMap<Spell, Integer> spells = new HashMap<>();
     private Player player;
     private Spell spokenSpell;
@@ -40,7 +43,6 @@ public class Wizard {
     private double level;
     private String spellID;
     private boolean wandRaised = false;
-
 
     //Save type, permissions, level, UUID in config
     public Wizard(Player player) {
@@ -89,6 +91,18 @@ public class Wizard {
     }
     public void setYear(int year) {
         this.year = year;
+    }
+    public boolean getListenForPrice() {
+        return listenForPrice;
+    }
+    public void setListenForPrice(boolean bool) {
+        listenForPrice = bool;
+    }
+    public ItemStack getItemForPrice() {
+        return itemForPrice;
+    }
+    public void setItemForPrice(ItemStack item) {
+        itemForPrice = item;
     }
     public double getHealth() {
         return player.getHealth();
@@ -199,6 +213,7 @@ public class Wizard {
         player.sendMessage(message);
 
     }
+
     public void removeBar() {
         BarAPI.removeBar(player);
     }

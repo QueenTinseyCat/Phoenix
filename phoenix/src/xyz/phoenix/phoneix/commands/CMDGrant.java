@@ -377,6 +377,24 @@ public class CMDGrant implements CommandExecutor  {
                     return true;
 
                 }
+                if(args[0].equalsIgnoreCase("dragot")) {
+                    ItemStack item = Items.DRAGOT.getItem();
+                    player.getInventory().addItem(item);
+                    Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a dragot.");
+                    return true;
+                }
+                if(args[0].equalsIgnoreCase("half_dragot")) {
+                    ItemStack item = Items.HALFDRAGOT.getItem();
+                    player.getInventory().addItem(item);
+                    Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a half dragot.");
+                    return true;
+                }
+                if(args[0].equalsIgnoreCase("quarter_dragot")) {
+                    ItemStack item = Items.QUARTERDRAGOT.getItem();
+                    player.getInventory().addItem(item);
+                    Bukkit.broadcastMessage(ChatColor.GOLD + "[Phoenix] " + ChatColor.DARK_AQUA + ((Player) sender).getDisplayName() + ChatColor.DARK_GREEN + " has given themselves a quarter dragot.");
+                    return true;
+                }
             }
 
 

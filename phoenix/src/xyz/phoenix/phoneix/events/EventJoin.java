@@ -5,6 +5,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.inventory.ItemStack;
+import xyz.phoenix.phoneix.items.wands.id;
 import xyz.phoenix.phoneix.player.Wizard;
 
 public class EventJoin implements Listener {
@@ -21,6 +23,23 @@ public class EventJoin implements Listener {
 
         Wizard wizard = new Wizard(player);
 
+        boolean hasId = false;
+        for(ItemStack item : player.getInventory().getContents()) {
+
+            if(item == null) continue;
+            if(!item.hasItemMeta()) continue;
+            if(item.getItemMeta().getDisplayName() == null) continue;
+
+            if(item.getItemMeta().getDisplayName().equals(ChatColor.GRAY + "Id")) {
+
+                player.getInventory().remove(item);
+                hasId = true;
+            }
+
+        }
+        if(hasId) {
+            new id().give(player);
+        }
 
     }
 

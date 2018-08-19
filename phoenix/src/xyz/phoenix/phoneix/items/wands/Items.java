@@ -3,12 +3,17 @@ package xyz.phoenix.phoneix.items.wands;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import xyz.phoenix.phoneix.player.Wizard;
 import xyz.phoenix.phoneix.utils.ItemBuilder;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 public enum Items {
 
@@ -434,11 +439,31 @@ public enum Items {
             .withFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS)
             .withData((short)0)
             .build()),
+    DRAGOT(new ItemBuilder()
+            .withMaterial(Material.GOLD_NUGGET)
+            .withName(ChatColor.GOLD + "Dragot")
+            .withEnchantment(Enchantment.LUCK)
+            .withFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS)
+            .build()),
+    HALFDRAGOT(new ItemBuilder()
+            .withMaterial(Material.FLINT)
+            .withName(ChatColor.GOLD + "Half Dragot")
+            .withEnchantment(Enchantment.LUCK)
+            .withFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS)
+            .build()),
+    QUARTERDRAGOT(new ItemBuilder()
+            .withMaterial(Material.IRON_NUGGET)
+            .withName(ChatColor.GOLD + "Quarter Dragot")
+            .withEnchantment(Enchantment.LUCK)
+            .withFlags(ItemFlag.HIDE_UNBREAKABLE, ItemFlag.HIDE_ATTRIBUTES, ItemFlag.HIDE_ENCHANTS)
+            .build()),
     ;
 
 
 
     private ItemStack item;
+
+
 
     Items(ItemStack item) {
         this.item = item;
